@@ -28,14 +28,9 @@ int		ft_print_s(char *s, t_flags *flags)
 	}
 	else
 		t = ft_strndup(s, t, ft_strlen(s));
-	
-	// printf("\nWidth = %d\n", flags->width);
-	// printf("\nWidth = %d\n", flags->width);
-	// print_flags(flags);
 	if (flags->width != 0)
 		if (flags->width > ft_strlen(t))
 			if (!(t = ft_padding(t, flags)))
-			//flags->width, flags->minus, flags->zero)))
 				return (-1);
 	return (ft_putstr(t));
 }

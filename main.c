@@ -22,35 +22,51 @@ void	test_str()
 	// padding ok
 	// precision tronca se < str.length, else ignora
 	int		i, j, t;
-	char	*s = "ciao";
+	char	*s = "iacovelli";
 
 	t = 15;
-	// printf("Stringa con printf: #");
-	i = printf("T###%-7.*s####%5s#\n", 5, s, "test");
-	// printf("Stringa con ft_printf: #");
-	j = ft_printf("F###%-7.*s####%5s#\n", 5, s, "test");
-	// printf("#\n");
+	i = printf("T###%66.25s#####\n", s);
+	j = ft_printf("F###%66.25s#####\n", s);
+	printf("%d = %d\n", i, j);
+	i = printf("T###%10.4s#####\n", s);
+	j = ft_printf("F###%10.4s#####\n", s);
 	printf("%d = %d\n", i, j);
 }
 
 void	test_integer()
 {
 	//La precision stampa di deafult a 7 caratteri
-	double	i = 3985.0123456789;
 
 	// la precision quando è un intero stampa
 	// stampa un padding sinistro di zeri per arrivare al numero di precision
-	int		n = 56;
-	int 	l;
+	int		n = 5687567;
+	int 	i, j;
 
-	printf("Questo è con printf = ");
-	l = printf("%*.*i", 4, 5, n);
-	printf("F\n");
-	printf("l = %d\n", l);
-	ft_printf("Questo è con ft_printf = %0*.*iF\n", 32, 5, i);
+	i = printf("####%-25.20i#####\n", n);
+	j = ft_printf("####%-25.20i#####\n", n);
+	printf("%i = %i\n", i, j);
+	i = printf("####%-25.50i#####\n", n);
+	j = ft_printf("####%-25.50i#####\n", n);
+	printf("%i = %i\n", i, j);
+	i = printf("####%25.20i#####\n", n);
+	j = ft_printf("####%25.20i#####\n", n);
+	printf("%i = %i\n", i, j);
+	i = printf("####%.20i#####\n", n);
+	j = ft_printf("####%.20i#####\n", n);
+	printf("%i = %i\n", i, j);
+	i = printf("####%-10.4i#####\n", n);
+	j = ft_printf("####%-10.4i#####\n", n);
+	printf("%i = %i\n", i, j);
+
 }
 
 int		main(void)
 {
 	test_str();
+
+	printf("\n\n\n-----------------start intenger-----------------\n\n\n");
+
+	test_integer();
+
+	//ft_itoa_base(16, "0123456789abcdef");
 }

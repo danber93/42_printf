@@ -31,5 +31,7 @@ int		ft_strlen(char *s);
 char	*ft_strndup(char *s, char *d, int n);
 char	*ft_padding(char *s, t_flags *flags);
 char	*ft_padding_left(char *s, char *dest, t_flags *flags);
+char	*ft_itoa_base(int n, char *base);
+int		ft_print_i(int n, t_flags *flags);
 
 #endif

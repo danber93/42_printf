@@ -2,7 +2,6 @@
 
 void		ft_flags_star(char c, t_flags *flags, va_list ap)
 {
-	// printf("sto sborrando\n");
 	if (!flags->point)
 	{
 		flags->star_width = 1;
@@ -20,7 +19,7 @@ int		ft_is_flag(char c, t_flags *flags, va_list ap)
 	if (c == 'd' || c == 'i' || c == 'c' || c == 's' || c == 'p' ||
 	c == 'u' || c == 'x' || c == 'X')
 		return (0);
-	if (c == '0')
+	if (flags->width == 0 && flags->point == 0 && c == '0')
 		flags->zero = 1;
 	if (c == '-')
 		flags->minus = 1;
@@ -28,11 +27,11 @@ int		ft_is_flag(char c, t_flags *flags, va_list ap)
 		flags->point = 1;
 	if (c == '*')
 		ft_flags_star(c, flags, ap);
-	if (c >= '1' && c <= '9')
+	if (c >= '0' && c <= '9')
 	{
 		if (!(flags->point))
 			flags->width = flags->width * 10 + (c - '0');
-		else 
+		else
 		{
 			if (flags->precision == -1)
 				flags->precision = 0 + (c - '0');

@@ -44,3 +44,33 @@ char	*ft_strndup(char *s, char *d, int n)
 	d[i] = '\0';
 	return (d);
 }
+
+char	*ft_itoa_base(int n, char *base)
+{
+	int		lenb;
+	char	*res;
+	int		i;
+	int		temp;
+
+	lenb = ft_strlen(base);
+	temp = n;
+	i = 1;
+	while (temp >= lenb)
+	{
+		temp /= lenb;
+		i++;
+	}
+	if (!(res = (char *)malloc(sizeof(char) * (i + 1))))
+		return (NULL);
+	res[i] = '\0';
+	i--;
+	while (i > 0)
+	{
+		res[i] = base[n % lenb];
+		n = n / lenb;
+		i--;
+	}
+	res[i] = base[n];
+	// printf("\nRes = %s\n", res);
+	return (res);
+}
