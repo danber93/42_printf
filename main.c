@@ -42,21 +42,98 @@ void	test_integer()
 	int		n = 5687567;
 	int 	i, j;
 
-	i = printf("####%-25.20i#####\n", n);
-	j = ft_printf("####%-25.20i#####\n", n);
-	printf("%i = %i\n", i, j);
+	// Meno ++ Width > Precision > Lenght
+	// Stampa a DESTRA i BLANKS (width - precision)
+	// Stampa a SINISTRA 0 + numero fino ad arrivare alla precision
+	i = printf("####%-25.10i#####\n", n);
+	//j = ft_printf("####%-25.20i#####\n", n);
+	//printf("%i = %i\n", i, j);
+	printf("n1 = %i\n", i); // = %i\n", i, j);
+
+	i = printf("####%25i#####\n", n);
+	//j = ft_printf("####%-.20i#####\n", n);
+	//printf("%i = %i\n", i, j);
+	printf("n1 = %i\n", i); // = %i\n", i, j);
+	
+	i = printf("####%.10i#####\n", n);
+	j = ft_printf("####%.10i#####\n", n);
+	//printf("%i = %i\n", i, j);
+	printf("n1 = %i\n", i); // = %i\n", i, j);
+	printf("n1 = %i\n", j);
+
+	i = printf("####%-25.10i#####\n", n);
+	//j = ft_printf("####%-25.20i#####\n", n);
+	//printf("%i = %i\n", i, j);
+	printf("n1 = %i\n", i); // = %i\n", i, j);
+
+	// Width > precision =>
+		// Stampa a 
+	i = printf("####%25.10i#####\n", n);
+	//j = ft_printf("####%-25.20i#####\n", n);
+	//printf("%i = %i\n", i, j);
+	printf("n1 = %i\n", i); // = %i\n", i, j);
+
+	i = printf("####%20.10i#####\n", n);
+	j = ft_printf("####%20.10i#####\n", n);
+	//printf("%i = %i\n", i, j);
+	printf("n1 = %i\n", i); // = %i\n", i, j);
+	printf("n2 = %i\n", j);
+
+	i = printf("####%15i#####\n", n);
+	j = ft_printf("####%15i#####\n", n);
+	//printf("%i = %i\n", i, j);
+	printf("n1 = %i\n", i); // = %i\n", i, j);
+	printf("n7 = %i\n", j);
+
+	// Minus ++ Precision > Width ( < Lenght)
+	// Se la precision è piu alta della Width
+	// Stampa a SINISTRA un numero di zeri uguale a = Precision - Lenght
 	i = printf("####%-25.50i#####\n", n);
 	j = ft_printf("####%-25.50i#####\n", n);
-	printf("%i = %i\n", i, j);
+	printf("n2 = %i\n", i); // = %i\n", i, j);
+	printf("n2 = %i\n", j);
+
+	i = printf("####%25.50i#####\n", n);
+	j = ft_printf("####%25.50i#####\n", n);
+	printf("n3 = %i\n", i); // = %i\n", i, j);
+	printf("n3 = %i\n", j);
+
+	i = printf("####%-50.25i#####\n", n);
+	//j = ft_printf("####%-25.50i#####\n", n);
+	printf("n2 = %i\n", i); // = %i\n", i, j);
+
+	i = printf("####%50.25i#####\n", n);
+	//j = ft_printf("####%-25.50i#####\n", n);
+	printf("n3 = %i\n", i); // = %i\n", i, j);
+
+	// No minus
+	// Width > Precision
+	// Printa 25 caratteri
+	// A SINISTRA mette #BLANKS = width - precision
+	// A SINISTRA subito dopo i Blanks
+		// Mette #0 = Width - precision - lenght
+	// Poi metto il numero
 	i = printf("####%25.20i#####\n", n);
-	j = ft_printf("####%25.20i#####\n", n);
-	printf("%i = %i\n", i, j);
+	// j = ft_printf("####%25.20i#####\n", n);
+	printf("n4 = %i\n", i); // = %i\n", i, j);
+
+	
+
+	// Width = 0 ;
+	// Precision > lenght
+		// #0 = Precision - lenght
 	i = printf("####%.20i#####\n", n);
-	j = ft_printf("####%.20i#####\n", n);
-	printf("%i = %i\n", i, j);
+	// j = ft_printf("####%.20i#####\n", n);
+	// printf("%i = %i\n", i, j);
+
+	// Minus si
+	// Precision < legnth = ignora
+	// Width presente si printano a DESTRA
+		// #BLANKS = width - lenght
 	i = printf("####%-10.4i#####\n", n);
-	j = ft_printf("####%-10.4i#####\n", n);
-	printf("%i = %i\n", i, j);
+	// j = ft_printf("####%-10.4i#####\n", n);
+	printf("n6 = %i\n", i); // = %i\n", i, j);
+
 
 }
 

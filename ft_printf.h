@@ -25,13 +25,16 @@ int		ft_printf(const char *s, ...);
 int		ft_putchar(char c);
 int		ft_putstr(char *s);
 int		ft_handle_format(char f, t_flags *flags, va_list ap);
-int		ft_print_c(char c);
-int		ft_print_s(char *s, t_flags *flags);
+int		ft_printf_c(char c);
+int		ft_printf_s(char *s, t_flags *flags);
 int		ft_strlen(char *s);
 char	*ft_strndup(char *s, char *d, int n);
-char	*ft_padding(char *s, t_flags *flags);
-char	*ft_padding_left(char *s, char *dest, t_flags *flags);
+char	*ft_s_padding(char *s, t_flags *flags);
+char	*ft_s_padding_left(char *s, char *dest, t_flags *flags);
 char	*ft_itoa_base(int n, char *base);
-int		ft_print_i(int n, t_flags *flags);
+int		ft_printf_i(int n, t_flags *flags);
+char	*ft_calloc(char *p, int size);
+int		ft_i_padding_blanks_left(char *s, t_flags *flags);
+int		ft_i_padding_blanks_right(char *s, t_flags *flags);
 
 #endif
