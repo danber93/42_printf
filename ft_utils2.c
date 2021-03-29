@@ -1,14 +1,15 @@
 #include "ft_printf.h"
 
-char	*ft_calloc(char *p, int size)
+char	*ft_calloc(int size)
 {
 	int		i;
+	char	*dest;
 
-	if (!(p = (char *)malloc(sizeof(char) * size + 1)))
+	if (!(dest = (char *)malloc(sizeof(char) * size + 1)))
 		return (NULL);
 	i = 0;
 	while (i < size)
-		p[i++] = '\0';
-	p[i] = '\0';
-	return (p);
+		dest[i++] = '\0';
+	dest[i] = '\0';
+	return (dest);
 }

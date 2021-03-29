@@ -39,7 +39,7 @@ void	test_integer()
 
 	// la precision quando è un intero stampa
 	// stampa un padding sinistro di zeri per arrivare al numero di precision
-	int		n = 5687567;
+	int		n = -5687567;
 	int 	i, j;
 
 	// Meno ++ Width > Precision > Lenght
