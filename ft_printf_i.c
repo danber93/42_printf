@@ -1,53 +1,5 @@
 #include "ft_printf.h"
 
-// int		ft_blanks(char *s, t_flags *flags)
-// {
-// 	// char	*tmp;
-// 	// int		len;
-// 	// int i;
-
-// 	// i = 0;
-// 	// if (flags->minus)
-// 	// {
-// 	// 	if (!(tmp = (char *)malloc(sizeof(char) * (flags->width + 1))))
-// 	// 		return (-1);
-// 	// 	while (i < (flags->width - (flags->width - flags->precision) - ft_stlren(s))
-// 	// }
-// 	return (0);
-// }
-
-// int		ft_printf_i(int n, t_flags *flags)
-// {
-// 	char	*s;
-
-// 	s = ft_itoa_base(n, "0123456789");
-// 	if (!flags->minus && (!flags->point && flags->precision < ft_strlen(s)))
-// 	{
-// 		flags->point = 0;
-// 		return (ft_printf_s(s, flags));
-// 	}
-// 	// if (flags->precision < flags->width)
-// 	// {
-// 	// 	return (ft_blanks(s, flags));
-// 	// }
-// 	if (flags->precision > flags->width)
-// 	{
-// 		flags->width = flags->precision;
-// 		flags->point = 0;
-// 		flags->zero = 1;
-// 		// print_flags(flags);
-// 		return (ft_printf_s(s, flags));
-// 	}
-// 	else
-// 	{
-// 		flags->point = 0;
-// 		return (ft_printf_s(s, flags));
-// 	}
-	
-
-// 	return (0);
-// }
-
 int		ft_i_padding_left(char *s, t_flags *flags)
 {
 	int		i;
@@ -63,7 +15,10 @@ int		ft_i_padding_left(char *s, t_flags *flags)
 		return (-1);
 	i = 0;
 	if (neg)
+	{
 		dest[i++] = '-';
+		s = ft_cut_minus(s);
+	}
 	padding = flags->precision - ft_strlen(s) + neg;
 	while (i < padding)
 		dest[i++] = '0';
@@ -75,7 +30,6 @@ int		ft_i_padding_left(char *s, t_flags *flags)
 		else
 			dest[i++] = s[j++];
 	}
-	// dest[i] = '\0';
 	return (ft_putstr(dest));
 }
 
@@ -102,18 +56,24 @@ int		ft_i_padding_blanks_left(char *s, t_flags *flags)
 	int		zeros;
 	int		blanks;
 	char	*dest;
+	int		neg;
 
 	if (!(dest = ft_calloc(flags->width)))
 		return (-1);
+	neg = 0;
+	if (s[0] == '-')
+	{
+		neg = 1;
+		s = ft_cut_minus(s);
+	}
 	if ((zeros = flags->precision - ft_strlen(s)) < 0)
 		zeros = 0;
 	blanks = flags->width - ft_strlen(s) - zeros;
 	i = 0;
-	while (i < blanks)
+	while (i < blanks - neg)
 		dest[i++] = ' ';
-	if (s[0] == '-')
+	if (neg)
 		dest[i++] = '-';
-	s = ft_cut_minus(s);
 	while (i < blanks + zeros)
 		dest[i++] = '0';
 	while (i < flags->width)
@@ -131,25 +91,27 @@ int		ft_i_padding_blanks_right(char *s, t_flags *flags)
 	int		zeros;
 	int		blanks;
 	char	*dest;
+	int		neg;
 
 	if (!(dest = ft_calloc(flags->width)))
 		return (-1);
-	len = ft_strlen(s);
-	if ((zeros = flags->precision - len) < 0)
-		zeros = 0;
-	blanks = flags->width - len - zeros;
 	i = 0;
+	neg = 0;
 	if (s[0] == '-')
 	{
+		neg = 1;
 		dest[i++] = '-';
-		len--;
 		s = ft_cut_minus(s);
 	}
-	while (i < zeros)
+	len = ft_strlen(s);
+	if ((zeros = flags->precision - len + neg) < 0)
+		zeros = 0;
+	blanks = flags->width - len - zeros;
+	while (i < zeros - neg)
 		dest[i++] = '0';
-	while (i < zeros + len)
+	while (i < zeros + len + neg)
 	{
-		dest[i] = s[i - zeros];
+		dest[i] = s[i - zeros - neg];
 		i++;
 	}
 	while (i < flags->width)
@@ -162,9 +124,7 @@ int		ft_printf_i(int n, t_flags *flags)
 {
 	char	*s;
 
-	// print_flags(flags);
 	s = ft_itoa_base(n, "0123456789");
-	// printf("dopo itoa\n");
 	if (!(flags->point) && !(flags->width))
 		return (ft_putstr(s));
 	if (flags->precision >= flags->width)

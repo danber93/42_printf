@@ -29,7 +29,10 @@ char	*ft_itoa_base_neg(int n, char *base)
 	if (!(res = ft_calloc(i + 1)))
 		return (NULL);
 	if (n < 0)
+	{
 		res[0] = '-';
+		i--;
+	}
 	n *= -1;
 	while (i > 0)
 	{

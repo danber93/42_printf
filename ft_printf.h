@@ -37,5 +37,6 @@ int		ft_printf_i(int n, t_flags *flags);
 char	*ft_calloc(int size);
 int		ft_i_padding_blanks_left(char *s, t_flags *flags);
 int		ft_i_padding_blanks_right(char *s, t_flags *flags);
+char	*ft_cut_minus(char *s);
 
 #endif
