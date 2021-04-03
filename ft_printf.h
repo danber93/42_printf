@@ -33,7 +33,7 @@ char	*ft_s_padding(char *s, t_flags *flags);
 char	*ft_s_padding_left(char *s, char *dest, t_flags *flags);
 char	*ft_itoa_base(int n, char *base);
 char	*ft_itoa_base_u(unsigned int n, char *base);
-int		ft_printf_i(int n, t_flags *flags);
+int		ft_printf_i(int n, t_flags *flags, char *base);
 char	*ft_calloc(int size);
 int		ft_i_padding_blanks_left(char *s, t_flags *flags);
 int		ft_i_padding_blanks_right(char *s, t_flags *flags);

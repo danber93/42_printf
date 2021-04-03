@@ -49,9 +49,14 @@ char	*ft_itoa_base(int n, char *base)
 	int		lenb;
 	char	*res;
 	int		i;
+	long int		li;
 
+	// sommare 4294967296 a n quando hex neg
 	if (n == -2147483648)
 		return ("-2147483648");
+	if ((ft_strlen(base) > 10) && n < 0)
+		li = n + 4294967296;
+	printf("\nx: %x\n", n);
 	if (n < 0)
 		return (ft_itoa_base_neg(n, base));
 	lenb = ft_strlen(base);

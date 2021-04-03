@@ -141,13 +141,22 @@ void	test_integer()
 	printf("%i = %i\n", i, j);
 }
 
+void	test_hex()
+{
+	int		x = -17;
+	int		i, j;
+
+	i = printf("T###%x#####\n", x);
+	j = ft_printf("F###%x#####\n", x);
+}
+
 int		main(void)
 {
-	test_str();
+	// test_str();
 
-	printf("\n\n\n-----------------start intenger-----------------\n\n\n");
+	printf("\n\n\n-----------------start hex-----------------\n\n\n");
 
-	test_integer();
+	test_hex();
 
 	//ft_itoa_base(16, "0123456789abcdef");
 }

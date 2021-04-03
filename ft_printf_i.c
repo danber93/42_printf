@@ -102,11 +102,11 @@ int		ft_i_padding_blanks_right(char *s, t_flags *flags)
 	return (ft_putstr(dest));
 }
 
-int		ft_printf_i(int n, t_flags *flags)
+int		ft_printf_i(int n, t_flags *flags, char *base)
 {
 	char	*s;
 
-	s = ft_itoa_base(n, "0123456789");
+	s = ft_itoa_base(n, base);
 	if (!(flags->point) && !(flags->width))
 		return (ft_putstr(s));
 	if (flags->precision >= flags->width)
