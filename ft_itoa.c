@@ -50,6 +50,8 @@ char	*ft_itoa_base(int n, char *base)
 	char	*res;
 	int		i;
 
+	if (n == -2147483648)
+		return ("-2147483648");
 	if (n < 0)
 		return (ft_itoa_base_neg(n, base));
 	lenb = ft_strlen(base);
@@ -93,6 +95,5 @@ char	*ft_itoa_base_u(unsigned int n, char *base)
 		i--;
 	}
 	res[i] = base[n];
-	// printf("\nRes = %s\n", res);
 	return (res);
 }

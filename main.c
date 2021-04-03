@@ -39,14 +39,14 @@ void	test_integer()
 
 	// la precision quando è un intero stampa
 	// stampa un padding sinistro di zeri per arrivare al numero di precision
-	int		n = -2;
+	int		n = 2147483647;
 	int 	i, j;
 
 	// Meno ++ Width > Precision > Lenght
 	// Stampa a DESTRA i BLANKS (width - precision)
 	// Stampa a SINISTRA 0 + numero fino ad arrivare alla precision
-	i = printf("####%-25.10i#####\n", n);
-	j = ft_printf("####%-25.10i#####\n", n);
+	i = printf("####%-25.10i#####\n", n + 1);
+	j = ft_printf("####%-25.10i#####\n", n + 1);
 	printf("%i = %i\n", i, j);
 	//printf("n1 = %i\n", i); // = %i\n", i, j);
 
