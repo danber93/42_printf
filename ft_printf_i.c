@@ -44,24 +44,26 @@ int		ft_i_padding_blanks_left(char *s, t_flags *flags)
 	int		zeros;
 	int		blanks;
 	char	*dest;
+	int		j;
 
 	if (!(dest = ft_calloc(flags->width)))
 		return (-1);
-	if ((zeros = flags->precision - ft_strlen(s)) < 0)
+	if ((zeros = flags->precision - ft_strlen(s) + ft_is_neg(s)) < 0)
 		zeros = 0;
-	blanks = flags->width - ft_strlen(s) - zeros;
+	if (flags->precision > ft_strlen(s) - ft_is_neg(s))
+		blanks = flags->width - flags->precision;
+	else
+		blanks = flags->width - ft_strlen(s) + ft_is_neg(s);
 	i = 0;
 	while (i < blanks - ft_is_neg(s))
 		dest[i++] = ' ';
 	if (ft_is_neg(s))
 		dest[i++] = '-';
-	while (i < blanks + zeros + ft_is_neg(s))
+	while ((i < blanks + zeros) && (zeros > 0))
 		dest[i++] = '0';
+	j = 0 + ft_is_neg(s);
 	while (i < flags->width)
-	{
-		dest[i] = s[i - blanks - zeros];
-		i++;
-	}
+		dest[i++] = s[j++];
 	return (ft_putstr(dest));
 }
 
@@ -86,12 +88,13 @@ int		ft_i_padding_blanks_right(char *s, t_flags *flags)
 		dest[i++] = '-';
 	if ((zeros = flags->precision - ft_strlen(s) + ft_is_neg(s)) < 0)
 		zeros = 0;
+	// printf("\n ZEROS = %i\n", zeros);
 	blanks = flags->width - flags->precision - ft_is_neg(s);
 	while (i < zeros + ft_is_neg(s))
 		dest[i++] = '0';
 	while (i < zeros + ft_strlen(s))
 	{
-		dest[i] = s[i - zeros];// - ft_is_neg(s)];
+		dest[i] = s[i - zeros];
 		i++;
 	}
 	while (i < flags->width)
