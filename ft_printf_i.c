@@ -5,31 +5,19 @@ int		ft_i_padding_left(char *s, t_flags *flags)
 	int		i;
 	int		j;
 	int		padding;
-	int		neg;
 	char	*dest;
 
-	neg = 0;
-	if (s[0] == '-')
-		neg = 1;
-	if (!(dest = ft_calloc(flags->precision + neg)))
+	if (!(dest = ft_calloc(flags->precision + ft_is_neg(s))))
 		return (-1);
 	i = 0;
-	if (neg)
-	{
+	if (ft_is_neg(s))
 		dest[i++] = '-';
-		s = ft_cut_minus(s);
-	}
-	padding = flags->precision - ft_strlen(s) + neg;
-	while (i < padding)
+	padding = flags->precision - ft_strlen(s) + ft_is_neg(s);
+	while (i < padding + ft_is_neg(s))
 		dest[i++] = '0';
-	j = 0;
-	while (i < flags->precision + neg)
-	{
-		if (s[j] == '-')
-			j++;
-		else
+	j = 0 + ft_is_neg(s);
+	while (i < flags->precision + ft_is_neg(s))
 			dest[i++] = s[j++];
-	}
 	return (ft_putstr(dest));
 }
 
@@ -56,25 +44,18 @@ int		ft_i_padding_blanks_left(char *s, t_flags *flags)
 	int		zeros;
 	int		blanks;
 	char	*dest;
-	int		neg;
 
 	if (!(dest = ft_calloc(flags->width)))
 		return (-1);
-	neg = 0;
-	if (s[0] == '-')
-	{
-		neg = 1;
-		s = ft_cut_minus(s);
-	}
 	if ((zeros = flags->precision - ft_strlen(s)) < 0)
 		zeros = 0;
 	blanks = flags->width - ft_strlen(s) - zeros;
 	i = 0;
-	while (i < blanks - neg)
+	while (i < blanks - ft_is_neg(s))
 		dest[i++] = ' ';
-	if (neg)
+	if (ft_is_neg(s))
 		dest[i++] = '-';
-	while (i < blanks + zeros)
+	while (i < blanks + zeros + ft_is_neg(s))
 		dest[i++] = '0';
 	while (i < flags->width)
 	{
@@ -84,39 +65,37 @@ int		ft_i_padding_blanks_left(char *s, t_flags *flags)
 	return (ft_putstr(dest));
 }
 
+int		ft_is_neg(char *s)
+{
+	if (s[0] == '-')
+		return (1);
+	return (0);
+}
+
 int		ft_i_padding_blanks_right(char *s, t_flags *flags)
 {
 	int		i;
-	int		len;
 	int		zeros;
 	int		blanks;
 	char	*dest;
-	int		neg;
 
 	if (!(dest = ft_calloc(flags->width)))
 		return (-1);
 	i = 0;
-	neg = 0;
 	if (s[0] == '-')
-	{
-		neg = 1;
 		dest[i++] = '-';
-		s = ft_cut_minus(s);
-	}
-	len = ft_strlen(s);
-	if ((zeros = flags->precision - len + neg) < 0)
+	if ((zeros = flags->precision - ft_strlen(s) + ft_is_neg(s)) < 0)
 		zeros = 0;
-	blanks = flags->width - len - zeros;
-	while (i < zeros - neg)
+	blanks = flags->width - flags->precision - ft_is_neg(s);
+	while (i < zeros + ft_is_neg(s))
 		dest[i++] = '0';
-	while (i < zeros + len + neg)
+	while (i < zeros + ft_strlen(s))
 	{
-		dest[i] = s[i - zeros - neg];
+		dest[i] = s[i - zeros];// - ft_is_neg(s)];
 		i++;
 	}
 	while (i < flags->width)
 		dest[i++] = ' ';
-	dest[i] = '\0';
 	return (ft_putstr(dest));
 }
 
