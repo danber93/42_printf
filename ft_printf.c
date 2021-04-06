@@ -39,7 +39,6 @@ int		ft_is_flag(char c, t_flags *flags, va_list ap)
 				flags->precision = flags->precision * 10 + (c - '0');
 		}
 	}
-	// print_flags(flags);
 	return (1);
 }
 

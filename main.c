@@ -143,16 +143,17 @@ void	test_integer()
 
 void	test_hex()
 {
-	int		x = -17;
+	int		x = 2147483647;
 	int		i, j;
 
-	i = printf("T###%x#####\n", x);
-	j = ft_printf("F###%x#####\n", x);
+	i = printf("T###%056X#####\n", x);
+	j = ft_printf("F###%056X#####\n", x);
 }
 
 int		main(void)
 {
 	// test_str();
+	test_integer();
 
 	printf("\n\n\n-----------------start hex-----------------\n\n\n");
 

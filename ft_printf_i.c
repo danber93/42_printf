@@ -88,7 +88,6 @@ int		ft_i_padding_blanks_right(char *s, t_flags *flags)
 		dest[i++] = '-';
 	if ((zeros = flags->precision - ft_strlen(s) + ft_is_neg(s)) < 0)
 		zeros = 0;
-	// printf("\n ZEROS = %i\n", zeros);
 	blanks = flags->width - flags->precision - ft_is_neg(s);
 	while (i < zeros + ft_is_neg(s))
 		dest[i++] = '0';

@@ -18,6 +18,24 @@ int		ft_digits(int n, int lenb)
 	return (i);
 }
 
+int		ft_digits_u(long int n, int lenb)
+{
+	int		i;
+
+	i = 1;
+	if (n < 0)
+	{
+		i++;
+		n = n * (-1);
+	}
+	while (n >= lenb)
+	{
+		n /= lenb;
+		i++;
+	}
+	return (i);
+}
+
 char	*ft_itoa_base_neg(int n, char *base)
 {
 	int		lenb;
@@ -51,12 +69,10 @@ char	*ft_itoa_base(int n, char *base)
 	int		i;
 	long int		li;
 
-	// sommare 4294967296 a n quando hex neg
 	if (n == -2147483648)
 		return ("-2147483648");
 	if ((ft_strlen(base) > 10) && n < 0)
 		li = n + 4294967296;
-	printf("\nx: %x\n", n);
 	if (n < 0)
 		return (ft_itoa_base_neg(n, base));
 	lenb = ft_strlen(base);
@@ -74,31 +90,28 @@ char	*ft_itoa_base(int n, char *base)
 	return (res);
 }
 
-char	*ft_itoa_base_u(unsigned int n, char *base)
+char	*ft_itoa_base_u(long int n, char *base)
 {
-	int		lenb;
-	char	*res;
-	int		i;
-	int		temp;
+	int				lenb;
+	char			*res;
+	int				i;
+	long int		li;
 
+	if ((ft_strlen(base) > 10) && n < 0)
+	 	li = 4294967295 - n;
+	else
+		li = n;
 	lenb = ft_strlen(base);
-	temp = n;
-	i = 1;
-	while (temp >= lenb)
-	{
-		temp /= lenb;
-		i++;
-	}
-	if (!(res = (char *)malloc(sizeof(char) * (i + 1))))
+	i = ft_digits_u(li, lenb);
+	if (!(res = ft_calloc(i + 1)))
 		return (NULL);
-	res[i] = '\0';
 	i--;
 	while (i > 0)
 	{
-		res[i] = base[n % lenb];
-		n = n / lenb;
+		res[i] = base[li % lenb];
+		li = li / lenb;
 		i--;
 	}
-	res[i] = base[n];
+	res[i] = base[li ];
 	return (res);
 }
