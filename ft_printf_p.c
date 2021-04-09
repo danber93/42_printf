@@ -25,8 +25,25 @@ int		ft_p_blanks_right(char *s, t_flags *flags)
 int		ft_p_blanks_left(char *s, t_flags *flags)
 {
 	int		i;
+	int		j;
+	char	*dest;
 
-	
+	if (flags->width > ft_strlen(s))
+		{
+			dest = ft_calloc(flags->width + 1);
+			i = 0;
+			while (i < flags->width - ft_strlen(s))
+			{
+				dest[i] = " ";
+				i++;
+			}
+			j = 0;
+			while (i < flags->width)
+				dest[i++] = s[j++];
+			dest[i] = '\0';
+			return (ft_putstr(dest));
+		}
+	return (ft_putstr(s));
 }
 
 int		ft_printf_p(unsigned long int n, t_flags *flags, char *base)
