@@ -34,7 +34,7 @@ int		ft_p_blanks_left(char *s, t_flags *flags)
 			i = 0;
 			while (i < flags->width - ft_strlen(s))
 			{
-				dest[i] = " ";
+				dest[i] = ' ';
 				i++;
 			}
 			j = 0;
@@ -50,10 +50,14 @@ int		ft_printf_p(unsigned long int n, t_flags *flags, char *base)
 {
 	int		i;
 	char	*s;
+	char	*dest;
 
 	// s = ft_itoa_base_lu(n, base);
 	// aggiungere 0x
+	dest = ft_calloc(ft_strlen(s) + 3);
+	dest[0] = '0';
+	dest[1] = 'x';
 	if (flags->minus)
-		return (ft_p_blanks_right(s, flags));
-	return (ft_p_blanks_left(s, flags));
+		return (ft_p_blanks_right(dest, flags));
+	return (ft_p_blanks_left(dest, flags));
 }
