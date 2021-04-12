@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-void		ft_flags_star(char c, t_flags *flags, va_list ap)
+void		ft_flags_star(t_flags *flags, va_list ap)
 {
 	if (!flags->point)
 	{
@@ -26,7 +26,7 @@ int		ft_is_flag(char c, t_flags *flags, va_list ap)
 	if (c == '.')
 		flags->point = 1;
 	if (c == '*')
-		ft_flags_star(c, flags, ap);
+		ft_flags_star(flags, ap);
 	if (c >= '0' && c <= '9')
 	{
 		if (!(flags->point))

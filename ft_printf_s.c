@@ -62,6 +62,7 @@ int		ft_printf_s(char *s, t_flags *flags)
 	if (!(flags->point) && !(flags->width))
 		return (ft_putstr(s));
 	len = ft_strlen(s);
+	t = ft_calloc(1);
 	if (flags->point == 1)
 	{
 		if (flags->precision < len)

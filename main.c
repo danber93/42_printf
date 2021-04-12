@@ -9,10 +9,10 @@ void	test_char()
 	int		j = 0;
 
 	printf("Carattere con printf: ");
-	i = printf("%c", c);
+	i = printf("%10c", c);
 	printf("\n");
 	ft_printf("Carattere con ft_printf: ");
-	j = ft_printf("%c", d);
+	j = ft_printf("%10c", d);
 	printf("\n");
 	printf("%d = %d\n", i, j);
 }
@@ -165,14 +165,23 @@ void	test_ptr()
 	ft_printf("Puntatore con printf:\n#%-55p#\n", &i);
 }
 
+void	test_uns()
+{
+	unsigned int	x = 2147483648;
+	int				i, j;
+
+	i = printf("T###%-26.25u#####\n", x);
+	j = ft_printf("F###%-26.25u#####\n", x);
+}
+
 int		main(void)
 {
 	// test_str();
 	// test_integer();
 
-	printf("\n\n\n-----------------start ptr-----------------\n\n\n");
+	printf("\n\n\n-----------------start uns-----------------\n\n\n");
 
-	test_ptr();
+	test_char();
 
 	//ft_itoa_base(16, "0123456789abcdef");
 }

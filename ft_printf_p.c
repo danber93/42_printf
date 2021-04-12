@@ -56,7 +56,7 @@ int		ft_digits_lu(unsigned long int n, int lenb)
 		i++;
 		n = n * (-1);
 	}
-	while (n >= lenb)
+	while (n >= (unsigned long int)lenb)
 	{
 		n /= lenb;
 		i++;
