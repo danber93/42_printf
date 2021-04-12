@@ -13,6 +13,8 @@ int		ft_handle_format(char f, t_flags *flags, va_list ap)
 		return (ft_printf_x(va_arg(ap, long int), flags, "0123456789abcdef"));
 	if (f == 'X')
 		return (ft_printf_x(va_arg(ap, long int), flags, "0123456789ABCDEF"));
+	if (f == 'p')
+		return (ft_printf_p(va_arg(ap, long int), flags, "0123456789abcdef"));
 	return (0);
 }
 

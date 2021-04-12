@@ -150,14 +150,29 @@ void	test_hex()
 	j = ft_printf("F###%056X#####\n", x);
 }
 
+void	test_ptr()
+{
+	int		i;
+	char	*s;
+	double	d;
+	float	f[5];
+	t_flags	t;
+
+	void *g = &i;
+
+	printf("Puntatore con printf:\n#%-55p#\n", &i);
+	
+	ft_printf("Puntatore con printf:\n#%-55p#\n", &i);
+}
+
 int		main(void)
 {
 	// test_str();
-	test_integer();
+	// test_integer();
 
-	printf("\n\n\n-----------------start hex-----------------\n\n\n");
+	printf("\n\n\n-----------------start ptr-----------------\n\n\n");
 
-	test_hex();
+	test_ptr();
 
 	//ft_itoa_base(16, "0123456789abcdef");
 }
