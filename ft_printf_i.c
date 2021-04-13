@@ -7,7 +7,8 @@ int		ft_i_padding_left(char *s, t_flags *flags)
 	int		padding;
 	char	*dest;
 
-	if (!(dest = ft_calloc(flags->precision + ft_is_neg(s))))
+	dest = ft_calloc(flags->precision + ft_is_neg(s);
+	if (!dest)
 		return (-1);
 	i = 0;
 	if (ft_is_neg(s))
@@ -18,7 +19,7 @@ int		ft_i_padding_left(char *s, t_flags *flags)
 	j = 0 + ft_is_neg(s);
 	while (i < flags->precision + ft_is_neg(s))
 			dest[i++] = s[j++];
-	return (ft_putstr(dest));
+	return (ft_result(dest));
 }
 
 char	*ft_cut_minus(char *s)
@@ -29,12 +30,14 @@ char	*ft_cut_minus(char *s)
 	char	*dest;
 
 	len = ft_strlen(s);
-	if (!(dest = ft_calloc(len)))
+	dest = ft_calloc(len);
+	if (!dest)
 		return (NULL);
 	i = 1;
 	j = 0;
 	while (s[i])
 		dest[j++] = s[i++];
+	free(s);
 	return (dest);
 }
 
@@ -64,7 +67,7 @@ int		ft_i_padding_blanks_left(char *s, t_flags *flags)
 	j = 0 + ft_is_neg(s);
 	while (i < flags->width)
 		dest[i++] = s[j++];
-	return (ft_putstr(dest));
+	return (ft_result(dest));
 }
 
 int		ft_is_neg(char *s)
@@ -98,7 +101,7 @@ int		ft_i_padding_blanks_right(char *s, t_flags *flags)
 	}
 	while (i < flags->width)
 		dest[i++] = ' ';
-	return (ft_putstr(dest));
+	return (ft_result(dest));
 }
 
 int		ft_printf_i(int n, t_flags *flags, char *base)
@@ -107,11 +110,13 @@ int		ft_printf_i(int n, t_flags *flags, char *base)
 
 	s = ft_itoa_base(n, base);
 	if (!(flags->point) && !(flags->width))
-		return (ft_putstr(s));
+		// return (ft_putstr(s));
+		return (ft_result(s));
 	if (flags->precision >= flags->width)
 	{
 		if (flags->precision <= ft_strlen(s))
-			return (ft_putstr(s));
+			// return (ft_putstr(s));
+			return (ft_result(s));
 		return (ft_i_padding_left(s, flags));
 	}
 	if (flags->width > flags->precision)

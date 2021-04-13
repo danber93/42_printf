@@ -198,4 +198,9 @@ int		main(void)
 	i = printf("#%.*s#\n", 8, NULL);
 	j = ft_printf("#%.*s#\n", 8, NULL);
 	printf("%d = %i\n", i, j);
+
+	i = printf("#%-*c#\n", 10, '1');
+	j = ft_printf("#%-*c#\n", 10, '1');
+	printf("%d = %i\n", i, j);
+
 }
