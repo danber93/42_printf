@@ -7,7 +7,10 @@ int		ft_i_padding_left(char *s, t_flags *flags)
 	int		padding;
 	char	*dest;
 
-	dest = ft_calloc(flags->precision + ft_is_neg(s);
+	// if (ft_strlen(s) == 1 && (flags->width > ft_strlen(s) || flags->precision > ft_strlen(s)))
+	// 	if (s[0] == '0')
+	// 		s[0] = ' ';
+	dest = ft_calloc(flags->precision + ft_is_neg(s));
 	if (!dest)
 		return (-1);
 	i = 0;
@@ -18,7 +21,8 @@ int		ft_i_padding_left(char *s, t_flags *flags)
 		dest[i++] = '0';
 	j = 0 + ft_is_neg(s);
 	while (i < flags->precision + ft_is_neg(s))
-			dest[i++] = s[j++];
+		dest[i++] = s[j++];
+	free(s);
 	return (ft_result(dest));
 }
 
@@ -49,9 +53,12 @@ int		ft_i_padding_blanks_left(char *s, t_flags *flags)
 	char	*dest;
 	int		j;
 
+	// if (ft_strlen(s) == 1 && (flags->width > ft_strlen(s) || flags->precision > ft_strlen(s)))
+	// 	if (s[0] == '0')
+	// 		s[0] = ' ';
 	if (!(dest = ft_calloc(flags->width)))
 		return (-1);
-	if ((zeros = flags->precision - ft_strlen(s) + ft_is_neg(s)) < 0)
+	if ((zeros = flags->width - ft_strlen(s) + ft_is_neg(s)) < 0)
 		zeros = 0;
 	if (flags->precision > ft_strlen(s) - ft_is_neg(s))
 		blanks = flags->width - flags->precision;
@@ -67,6 +74,7 @@ int		ft_i_padding_blanks_left(char *s, t_flags *flags)
 	j = 0 + ft_is_neg(s);
 	while (i < flags->width)
 		dest[i++] = s[j++];
+	free(s);
 	return (ft_result(dest));
 }
 
@@ -81,9 +89,12 @@ int		ft_i_padding_blanks_right(char *s, t_flags *flags)
 {
 	int		i;
 	int		zeros;
-	int		blanks;
+	//int		blanks;
 	char	*dest;
 
+	// if (ft_strlen(s) == 1 && (flags->width > ft_strlen(s) || flags->precision > ft_strlen(s)))
+	// 	if (s[0] == '0')
+	// 		s[0] = ' ';
 	if (!(dest = ft_calloc(flags->width)))
 		return (-1);
 	i = 0;
@@ -91,7 +102,7 @@ int		ft_i_padding_blanks_right(char *s, t_flags *flags)
 		dest[i++] = '-';
 	if ((zeros = flags->precision - ft_strlen(s) + ft_is_neg(s)) < 0)
 		zeros = 0;
-	blanks = flags->width - flags->precision - ft_is_neg(s);
+	//blanks = flags->width - flags->precision - ft_is_neg(s);
 	while (i < zeros + ft_is_neg(s))
 		dest[i++] = '0';
 	while (i < zeros + ft_strlen(s))
@@ -101,6 +112,7 @@ int		ft_i_padding_blanks_right(char *s, t_flags *flags)
 	}
 	while (i < flags->width)
 		dest[i++] = ' ';
+	free(s);
 	return (ft_result(dest));
 }
 

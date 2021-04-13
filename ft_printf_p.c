@@ -17,9 +17,11 @@ int		ft_p_blanks_right(char *s, t_flags *flags)
 			while (i < flags->width)
 				dest[i++] = ' ';
 			dest[i] = '\0';
-			return (ft_putstr(dest));
+			free(s);
+			return (ft_result(dest));
 		}
-	return (ft_putstr(s));
+	free(s);
+	return (ft_result(s));
 }
 
 int		ft_p_blanks_left(char *s, t_flags *flags)
@@ -41,9 +43,10 @@ int		ft_p_blanks_left(char *s, t_flags *flags)
 			while (i < flags->width)
 				dest[i++] = s[j++];
 			dest[i] = '\0';
-			return (ft_putstr(dest));
+			free(s);
+			return (ft_result(dest));
 		}
-	return (ft_putstr(s));
+	return (ft_result(s));
 }
 
 int		ft_digits_lu(unsigned long int n, int lenb)
