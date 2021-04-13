@@ -33,6 +33,7 @@ char	*ft_strndup(char *s, char *d, int n)
 {
 	int	i;
 
+	free(d);
 	if (!(d = (char *)malloc(n + 1)))
 		return (NULL);
 	i = 0;

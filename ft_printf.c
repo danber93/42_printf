@@ -6,6 +6,11 @@ void		ft_flags_star(t_flags *flags, va_list ap)
 	{
 		flags->star_width = 1;
 		flags->width = va_arg(ap, int);
+		if (flags->width < 0)
+		{
+			flags->minus = 1;
+			flags->width *= -1;
+		}
 	}
 	else
 	{

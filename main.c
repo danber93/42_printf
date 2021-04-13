@@ -15,6 +15,10 @@ void	test_char()
 	j = ft_printf("%10c", d);
 	printf("\n");
 	printf("%d = %d\n", i, j);
+
+	i = printf(" -%*c* -%-*c* ", -2, 0, 2, 0);
+	j = ft_printf(" -%*c* -%-*c* ", -2, 0, 2, 0);
+	printf("%d = %d\n", i, j);
 }
 
 void	test_str()
@@ -176,12 +180,12 @@ void	test_uns()
 
 int		main(void)
 {
-	// test_str();
+	test_str();
 	// test_integer();
 
 	printf("\n\n\n-----------------start uns-----------------\n\n\n");
 
-	test_char();
-
+	//test_char();
+	
 	//ft_itoa_base(16, "0123456789abcdef");
 }

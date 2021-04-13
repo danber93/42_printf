@@ -5,7 +5,8 @@ char	*ft_calloc(int size)
 	int		i;
 	char	*dest;
 
-	if (!(dest = (char *)malloc(sizeof(char) * size + 1)))
+	dest = (char *)malloc(sizeof(char) * (size + 1));
+	if (!dest)
 		return (NULL);
 	i = 0;
 	while (i < size)

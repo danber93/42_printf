@@ -26,7 +26,7 @@ char	*ft_s_padding_left(char *s, char *dest, t_flags *flags)
 char	*ft_s_padding(char *s, t_flags *flags)
 {
 	int		i;
-	char	*dest = "dest";
+	char	*dest;
 
 	if (!(dest = (char *)malloc(flags->width + 1)))
 		return (NULL);
@@ -80,5 +80,5 @@ int		ft_printf_s(char *s, t_flags *flags)
 		if (flags->width > ft_strlen(t))
 			if (!(t = ft_s_padding(t, flags)))
 				return (-1);
-	return (ft_putstr(t));
+	return (ft_result(t));
 }

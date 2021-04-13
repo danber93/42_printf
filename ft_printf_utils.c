@@ -1,5 +1,13 @@
 #include "ft_printf.h"
 
+int		gitft_result(char *s)
+{
+	int	i;
+
+	i = ft_putstr(s);
+	free(s);
+	return (i);
+}
 
 int		ft_handle_format(char f, t_flags *flags, va_list ap)
 {

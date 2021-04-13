@@ -43,5 +43,7 @@ int		ft_i_padding_left(char *s, t_flags *flags);
 int		ft_printf_x(long int n, t_flags *flags, char *base);
 int		ft_printf_p(unsigned long int n, t_flags *flags, char *base);
 int		ft_printf_u(unsigned int n, t_flags *flags, char *base);
+int		ft_result(char *s);
+int		ft_c_padding_left(char c, t_flags *flags);
 
 #endif
