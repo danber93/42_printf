@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int		gitft_result(char *s)
+int		ft_result(char *s)
 {
 	int	i;
 

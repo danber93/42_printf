@@ -20,6 +20,7 @@ char	*ft_s_padding_left(char *s, char *dest, t_flags *flags)
 	while (i < flags->width)
 		dest[i++] = s[j++];
 	dest[i] = '\0';
+	free(s);
 	return (dest);
 }
 
@@ -35,30 +36,68 @@ char	*ft_s_padding(char *s, t_flags *flags)
 	{
 		while (i < flags->width)
 		{
-			if (s[i] && i < (flags->width - ft_strlen(s)))
+			if (s[i] && i < ft_strlen(s))
 				dest[i] = s[i];
 			else
 				dest[i]  = ' ';
 			i++;
 		}
 		dest[i] = '\0';
+		free(s);
 		return (dest);
 	}
 	return (dest = ft_s_padding_left(s, dest, flags));
 }
 
+int		ft_s_null_pright(char *s, t_flags *flags)
+{
+	int		i;
+	int		j;
+	char	*n;
+
+	n = "(null)";
+	i = 0;
+	j = 0;
+	while (i < flags->precision && i < flags->width)
+		s[i++] = n[j++];
+	while (i < flags->width)
+		s[i++] = ' ';
+	return (ft_result(s));
+}
+
+
+int		ft_s_null_pleft(t_flags *flags)
+{
+	int		i;
+	int		j;
+	char	*s;
+	char	*n;
+
+	n = "(null)";
+	if (flags->width > flags->precision)
+		s = ft_calloc(flags->width + 1);
+	else
+		s = ft_calloc(flags->precision + 1);
+	if (!s)
+		return (-1);
+	if (flags->minus)
+		return (ft_s_null_pright(s, flags));
+	i = 0;
+	while (i < flags->width - flags->precision)
+		s[i++] = ' ';
+	j = 0;
+	while (i < flags->width)
+		s[i++] = n[j++];
+	return(ft_result(s));
+}
+
 int		ft_printf_s(char *s, t_flags *flags)
 {
-	// se s.length <= precision, allora ignora precision => s2
-	// se s.length > precision, allora tronca s => s2
-	// se padding <= s2.length, allora ignora => s3
-	// se padding > s2.length, allora =>
-	//									se flag.minus c'è, padda a dx => s3
-	//									altrimenti padda a sx => s3
-	//	NOTE 	il flag zero, non accettabile sulle stringhe
 	int		len;
 	char	*t;
 
+	if (!s)
+		return (ft_s_null_pleft(flags));
 	if (!(flags->point) && !(flags->width))
 		return (ft_putstr(s));
 	len = ft_strlen(s);

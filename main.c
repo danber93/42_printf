@@ -180,12 +180,22 @@ void	test_uns()
 
 int		main(void)
 {
-	test_str();
+	int i;
+	int j;
+	//test_str();
 	// test_integer();
 
 	printf("\n\n\n-----------------start uns-----------------\n\n\n");
 
-	//test_char();
+	i = printf("#%-3.s#\n", NULL);
+	j = ft_printf("#%-3.s#\n", NULL);
+	printf("%d = %i\n", i, j);
 	
-	//ft_itoa_base(16, "0123456789abcdef");
+	i = printf("#%9.7s#\n", NULL);
+	j = ft_printf("#%9.7s#\n", NULL);
+	printf("%d = %i\n", i, j);
+
+	i = printf("#%.*s#\n", 8, NULL);
+	j = ft_printf("#%.*s#\n", 8, NULL);
+	printf("%d = %i\n", i, j);
 }
