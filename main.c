@@ -195,16 +195,12 @@ int		main(void)
 	// j = ft_printf("#%9.7s#\n", NULL);
 	// printf("%d = %i\n", i, j);
 
-	// i = printf("#%.*s#\n", 8, NULL);
-	// j = ft_printf("#%.*s#\n", 8, NULL);
-	// printf("%d = %i\n", i, j);
+	i = printf("#hello, %s.#\n", NULL);
+	j = ft_printf("#hello, %s.#\n", NULL);
+	printf("%d = %i\n", i, j);
 
 	// i = printf("#%-*c#\n", 10, '1');
 	// j = ft_printf("#%-*c#\n", 10, '1');
 	// printf("%d = %i\n", i, j);
-
-	i = printf("#%05i#\n", 43);
-	j = ft_printf("#%05i#\n", 43);
-	printf("%d = %d\n", i, j);
 
 }
