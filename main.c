@@ -181,41 +181,14 @@ int		main(void)
 {
 	int i;
 	int j;
-	//test_str();
-	// test_integer();
 
-	printf("\n\n\n-----------------start uns-----------------\n\n\n");
+	printf("\n\n\n-----------------start uns-----------------\n\n");
 
-	// i = printf("#%-3.s#\n", NULL);
-	// j = ft_printf("#%-3.s#\n", NULL);
-	// printf("%d = %i\n", i, j);
-	
-	// i = printf("#%9.7s#\n", NULL);
-	// j = ft_printf("#%9.7s#\n", NULL);
-	// printf("%d = %i\n", i, j);
-
-	i = printf("#%5.0d#\n", 0);
-	j = ft_printf("#%5.0d#\n", 0);
+	i = printf("#%-05%#\n");
+	j = ft_printf("#%-05%#\n");
 	printf("%d = %i\n\n", i, j);
 
-	i = printf("#%07.3d#\n", 33);
-	j = ft_printf("#%07.3d#\n", 33);
+	i = printf("#%5c#\n", '%');
+	j = ft_printf("#%5c#\n", '%');
 	printf("%d = %i\n\n", i, j);
-
-	i = printf("#%-15.0d#\n", 33);
-	j = ft_printf("#%-15.0d#\n", 33);
-	printf("%d = %i\n", i, j);
-
-	i = printf("#%7d#\n", 33);
-	j = ft_printf("#%7d#\n", 33);
-	printf("%d = %i\n", i, j);
-
-	i = printf("#%015.5d#\n", 33);
-	j = ft_printf("#%015.5d#\n", 33);
-	printf("%d = %i\n", i, j);
-
-	// i = printf("#%-*c#\n", 10, '1');
-	// j = ft_printf("#%-*c#\n", 10, '1');
-	// printf("%d = %i\n", i, j);
-
 }

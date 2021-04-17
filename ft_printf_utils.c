@@ -11,8 +11,10 @@ int		ft_result(char *s)
 
 int		ft_handle_format(char f, t_flags *flags, va_list ap)
 {
+	if (f == '%')
+		return (ft_printf_c('%', flags, 1));
 	if (f == 'c')
-		return (ft_printf_c(va_arg(ap, int), flags));
+		return (ft_printf_c(va_arg(ap, int), flags, 0));
 	if (f == 'd' || f == 'i')
 		return (ft_printf_i(va_arg(ap, int), flags, "0123456789"));
 	if (f == 's')

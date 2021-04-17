@@ -22,7 +22,7 @@ void		ft_flags_star(t_flags *flags, va_list ap)
 int		ft_is_flag(char c, t_flags *flags, va_list ap)
 {
 	if (c == 'd' || c == 'i' || c == 'c' || c == 's' || c == 'p' ||
-	c == 'u' || c == 'x' || c == 'X')
+	c == 'u' || c == 'x' || c == 'X' || c == '%')
 		return (0);
 	if (flags->width == 0 && flags->point == 0 && c == '0')
 		flags->zero = 1;
