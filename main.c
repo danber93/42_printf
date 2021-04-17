@@ -194,8 +194,24 @@ int		main(void)
 	// j = ft_printf("#%9.7s#\n", NULL);
 	// printf("%d = %i\n", i, j);
 
-	i = printf("#%-7.12s#\n", NULL);
-	j = ft_printf("#%-7.12s#\n", NULL);
+	i = printf("#%5.0d#\n", 0);
+	j = ft_printf("#%5.0d#\n", 0);
+	printf("%d = %i\n\n", i, j);
+
+	i = printf("#%07.3d#\n", 33);
+	j = ft_printf("#%07.3d#\n", 33);
+	printf("%d = %i\n\n", i, j);
+
+	i = printf("#%-15.0d#\n", 33);
+	j = ft_printf("#%-15.0d#\n", 33);
+	printf("%d = %i\n", i, j);
+
+	i = printf("#%7d#\n", 33);
+	j = ft_printf("#%7d#\n", 33);
+	printf("%d = %i\n", i, j);
+
+	i = printf("#%015.5d#\n", 33);
+	j = ft_printf("#%015.5d#\n", 33);
 	printf("%d = %i\n", i, j);
 
 	// i = printf("#%-*c#\n", 10, '1');
