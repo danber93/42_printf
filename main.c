@@ -158,7 +158,6 @@ void	test_ptr()
 {
 	int		i;
 	char	*s;
-	double	d;
 	float	f[5];
 	t_flags	t;
 
@@ -195,8 +194,8 @@ int		main(void)
 	// j = ft_printf("#%9.7s#\n", NULL);
 	// printf("%d = %i\n", i, j);
 
-	i = printf("#hello, %s.#\n", NULL);
-	j = ft_printf("#hello, %s.#\n", NULL);
+	i = printf("#%-7.12s#\n", NULL);
+	j = ft_printf("#%-7.12s#\n", NULL);
 	printf("%d = %i\n", i, j);
 
 	// i = printf("#%-*c#\n", 10, '1');
