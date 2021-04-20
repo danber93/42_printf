@@ -182,13 +182,23 @@ int		main(void)
 	int i;
 	int j;
 
+	int p = 45;
+	int a01 = 12;
+	int a02 = 12;
+	int a03 = 12;
+	int a04 = 12;
+	int a05 = 12;
+	int a06 = 12;
+	int a07 = 12;
+	int a08 = 12;
+	int a09 = 12;
+	int a10 = 12;
+	int a11 = 12;
+	int a12 = 12;
+
 	printf("\n\n\n-----------------start uns-----------------\n\n");
 
-	i = printf("#%-05%#\n");
-	j = ft_printf("#%-05%#\n");
-	printf("%d = %i\n\n", i, j);
-
-	i = printf("#%5c#\n", '%');
-	j = ft_printf("#%5c#\n", '%');
+	i = printf("#%.u#\n", 0);
+	j = ft_printf("#%.u#\n", 0);
 	printf("%d = %i\n\n", i, j);
 }

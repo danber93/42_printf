@@ -17,10 +17,10 @@ int		ft_p_blanks_right(char *s, t_flags *flags)
 			while (i < flags->width)
 				dest[i++] = ' ';
 			dest[i] = '\0';
-			free(s);
+			// free(s);
 			return (ft_result(dest));
 		}
-	free(s);
+	// free(s);
 	return (ft_result(s));
 }
 
@@ -103,6 +103,9 @@ int		ft_printf_p(unsigned long int n, t_flags *flags, char *base)
 	dest[1] = 'x';
 	i = 2;
 	j = 0;
+	if (ft_strlen(s) == 1 && flags->point)
+		if (s[0] == '0')
+			s[0] = '\0';
 	while (s[j])
 		dest[i++] = s[j++];
 	if (flags->minus)
