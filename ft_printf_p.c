@@ -1,52 +1,53 @@
 #include "ft_printf.h"
 
-int		ft_p_blanks_right(char *s, t_flags *flags)
+int		ft_p_blanks_right(char **s, t_flags *flags)
 {
 	int		i;
 	char	*dest;
 	
-	if (flags->width > ft_strlen(s))
+	if (flags->width > ft_strlen(*s))
 		{
 			dest = ft_calloc(flags->width + 1);
 			i = 0;
-			while (i < ft_strlen(s))
+			while (i < ft_strlen(*s))
 			{
-				dest[i] = s[i];
+				dest[i] = (*s)[i];
 				i++;
 			}
 			while (i < flags->width)
 				dest[i++] = ' ';
 			dest[i] = '\0';
-			// free(s);
+			free(*s);
 			return (ft_result(dest));
 		}
-	// free(s);
-	return (ft_result(s));
+	return (ft_result(*s));
 }
 
-int		ft_p_blanks_left(char *s, t_flags *flags)
+int		ft_p_blanks_left(char **s, t_flags *flags)
 {
 	int		i;
 	int		j;
 	char	*dest;
 
-	if (flags->width > ft_strlen(s))
+	if (flags->width > ft_strlen(*s))
 		{
 			dest = ft_calloc(flags->width + 1);
 			i = 0;
-			while (i < flags->width - ft_strlen(s))
+			while (i < flags->width - ft_strlen(*s))
 			{
 				dest[i] = ' ';
 				i++;
 			}
 			j = 0;
 			while (i < flags->width)
-				dest[i++] = s[j++];
+			{
+				dest[i++] = (*s)[j++];
+			}
 			dest[i] = '\0';
-			free(s);
+			free(*s);
 			return (ft_result(dest));
 		}
-	return (ft_result(s));
+	return (ft_result(*s));
 }
 
 int		ft_digits_lu(unsigned long int n, int lenb)
@@ -108,7 +109,8 @@ int		ft_printf_p(unsigned long int n, t_flags *flags, char *base)
 			s[0] = '\0';
 	while (s[j])
 		dest[i++] = s[j++];
+	free(s);
 	if (flags->minus)
-		return (ft_p_blanks_right(dest, flags));
-	return (ft_p_blanks_left(dest, flags));
+		return (ft_p_blanks_right(&dest, flags));
+	return (ft_p_blanks_left(&dest, flags));
 }

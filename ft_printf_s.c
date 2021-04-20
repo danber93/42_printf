@@ -100,7 +100,7 @@ int		ft_s_null_fpoint(t_flags *flags)
 	char	*n;
 
 	n = "(null)";
-	if (flags->precision > 6)
+	if (flags->precision > 6 || flags->precision < -1)
 		flags->precision = 6;
 	if (flags->precision > flags->width)
 	{
@@ -109,7 +109,7 @@ int		ft_s_null_fpoint(t_flags *flags)
 	}
 	else
 		s = ft_calloc(flags->width);
-	if (flags->precision == -1)
+	if (flags->precision <= -1)
 		flags->precision = 0;
 	i = 0;
 	while (i < flags->width - flags->precision)
@@ -130,7 +130,7 @@ int		ft_s_null_pleft(t_flags *flags)
 	char	*n;
 
 	n = "(null)";
-	if (!flags->width && flags->precision == -1)
+	if (!flags->width && !flags->point)
 		return (ft_putstr(n));
 	if (flags->point == 1)
 		return (ft_s_null_fpoint(flags));
