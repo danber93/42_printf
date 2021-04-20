@@ -198,7 +198,7 @@ int		main(void)
 
 	printf("\n\n\n-----------------start uns-----------------\n\n");
 
-	i = printf("#%.u#\n", 0);
-	j = ft_printf("#%.u#\n", 0);
+	i = printf("#%.*s#\n", -2, NULL);
+	j = ft_printf("#%.*s#\n", -2, NULL);
 	printf("%d = %i\n\n", i, j);
 }
