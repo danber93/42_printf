@@ -1,56 +1,56 @@
 #include "ft_printf.h"
 
-int		ft_p_blanks_right(char **s, t_flags *flags)
+int	ft_p_blanks_right(char **s, t_flags *flags)
 {
 	int		i;
 	char	*dest;
-	
+
 	if (flags->width > ft_strlen(*s))
+	{
+		dest = ft_calloc(flags->width + 1);
+		i = 0;
+		while (i < ft_strlen(*s))
 		{
-			dest = ft_calloc(flags->width + 1);
-			i = 0;
-			while (i < ft_strlen(*s))
-			{
-				dest[i] = (*s)[i];
-				i++;
-			}
-			while (i < flags->width)
-				dest[i++] = ' ';
-			dest[i] = '\0';
-			free(*s);
-			return (ft_result(dest));
+			dest[i] = (*s)[i];
+			i++;
 		}
+		while (i < flags->width)
+			dest[i++] = ' ';
+		dest[i] = '\0';
+		free(*s);
+		return (ft_result(dest));
+	}
 	return (ft_result(*s));
 }
 
-int		ft_p_blanks_left(char **s, t_flags *flags)
+int	ft_p_blanks_left(char **s, t_flags *flags)
 {
 	int		i;
 	int		j;
 	char	*dest;
 
 	if (flags->width > ft_strlen(*s))
+	{
+		dest = ft_calloc(flags->width + 1);
+		i = 0;
+		while (i < flags->width - ft_strlen(*s))
 		{
-			dest = ft_calloc(flags->width + 1);
-			i = 0;
-			while (i < flags->width - ft_strlen(*s))
-			{
-				dest[i] = ' ';
-				i++;
-			}
-			j = 0;
-			while (i < flags->width)
-			{
-				dest[i++] = (*s)[j++];
-			}
-			dest[i] = '\0';
-			free(*s);
-			return (ft_result(dest));
+			dest[i] = ' ';
+			i++;
 		}
+		j = 0;
+		while (i < flags->width)
+		{
+			dest[i++] = (*s)[j++];
+		}
+		dest[i] = '\0';
+		free(*s);
+		return (ft_result(dest));
+	}
 	return (ft_result(*s));
 }
 
-int		ft_digits_lu(unsigned long int n, int lenb)
+int	ft_digits_lu(unsigned long int n, int lenb)
 {
 	int		i;
 
@@ -78,7 +78,8 @@ char	*ft_itoa_base_lu(unsigned long int n, char *base)
 	li = n;
 	lenb = ft_strlen(base);
 	i = ft_digits_lu(li, lenb);
-	if (!(res = ft_calloc(i + 1)))
+	res = ft_calloc(i + 1);
+	if (!res)
 		return (NULL);
 	i--;
 	while (i > 0)
@@ -87,11 +88,11 @@ char	*ft_itoa_base_lu(unsigned long int n, char *base)
 		li = li / lenb;
 		i--;
 	}
-	res[i] = base[li ];
+	res[i] = base[li];
 	return (res);
 }
 
-int		ft_printf_p(unsigned long int n, t_flags *flags, char *base)
+int	ft_printf_p(unsigned long int n, t_flags *flags, char *base)
 {
 	int		i;
 	int		j;
