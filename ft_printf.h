@@ -47,5 +47,10 @@ int		ft_result(char *s);
 int		ft_c_padding_left(char c, t_flags *flags);	
 int		ft_digits(int n, int lenb);
 char	*ft_gear(char *s);
+int		ft_i_padding_left(char *s, t_flags *flags);
+char	*ft_cut_minus(char *s);
+int		ft_i_pleft_no_blanks(char *s, char *dest, int zeros);
+int		ft_i_padding_blanks_left_2(char *s, t_flags *flags, int blanks, int zeros);
+int		ft_is_neg(char *s);
 
 #endif
