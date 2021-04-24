@@ -152,7 +152,10 @@ int		ft_printf_i(int n, t_flags *flags, char *base)
 		if (flags->precision <= ft_strlen(s))
 		{
 			if (flags->precision <= 0 && s[0] == '0')
+			{
+				free(s);
 				return (0);
+			}
 			else
 				return (ft_result(s));
 		}
@@ -161,9 +164,12 @@ int		ft_printf_i(int n, t_flags *flags, char *base)
 	if (flags->width > flags->precision)
 	{
 		if (flags->width == 0 && flags->precision == -1 && s[0] == '0')
+		{
+			free(s);
 			return (0);
+		}
 		if (flags->width <= ft_strlen(s))
-			return (ft_putstr(s));
+			return (ft_result(s));
 		if (!flags->minus)
 			return (ft_i_padding_blanks_left(s, flags));
 		return (ft_i_padding_blanks_right(s, flags));

@@ -1,5 +1,6 @@
 #include "ft_printf.h"
 
+
 int		ft_x_revert(char *dest, int blanks)
 {
 	int		i;
@@ -89,7 +90,7 @@ int		ft_printf_x(long int n, t_flags *flags, char *base)
 
 	s = ft_itoa_base_u(n, base);
 	if (flags->point && flags->precision <= 0 && ft_strlen(s) == 1)
-		if (s[0] == '0')
+		if (s[0] == '0' && !flags->star_precision)
 			s[0] = '\0';
 	if (flags->zero)
 		return (ft_x_padding_left(s, flags));
