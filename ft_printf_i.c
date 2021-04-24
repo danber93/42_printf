@@ -169,7 +169,12 @@ int		ft_printf_i(int n, t_flags *flags, char *base)
 			return (0);
 		}
 		if (flags->width <= ft_strlen(s))
+		{
+			if (ft_strlen(s) == 1)
+				if (s[0] == '0')
+					s[0] = ' ';
 			return (ft_result(s));
+		}
 		if (!flags->minus)
 			return (ft_i_padding_blanks_left(s, flags));
 		return (ft_i_padding_blanks_right(s, flags));

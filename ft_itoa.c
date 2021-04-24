@@ -1,5 +1,22 @@
 #include "ft_printf.h"
 
+char	*ft_gear(char *s)
+{
+	int		i;
+	char	*str;
+
+	str = ft_calloc(11);
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (i < ft_strlen(s))
+	{
+		str[i] = s[i];
+		i++;
+	}
+	return str;
+}
+
 int		ft_digits(int n, int lenb)
 {
 	int		i;
@@ -70,7 +87,10 @@ char	*ft_itoa_base(int n, char *base)
 	long int		li;
 
 	if (n == -2147483648)
-		return ("-2147483648");
+	{
+		res = ft_gear("-2147483648");
+		return (res);
+	}
 	if ((ft_strlen(base) > 10) && n < 0)
 		li = n + 4294967296;
 	if (n < 0)
