@@ -1,41 +1,6 @@
 #include "ft_printf.h"
 
-char	*ft_gear(char *s)
-{
-	int		i;
-	char	*str;
-
-	str = ft_calloc(11);
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (i < ft_strlen(s))
-	{
-		str[i] = s[i];
-		i++;
-	}
-	return str;
-}
-
-int		ft_digits(int n, int lenb)
-{
-	int		i;
-
-	i = 1;
-	if (n < 0)
-	{
-		i++;
-		n = n * (-1);
-	}
-	while (n >= lenb)
-	{
-		n /= lenb;
-		i++;
-	}
-	return (i);
-}
-
-int		ft_digits_u(long int n, int lenb)
+int	ft_digits_u(long int n, int lenb)
 {
 	int		i;
 
@@ -61,7 +26,8 @@ char	*ft_itoa_base_neg(int n, char *base)
 
 	lenb = ft_strlen(base);
 	i = ft_digits(n, lenb);
-	if (!(res = ft_calloc(i + 1)))
+	res = ft_calloc(i + 1);
+	if (!res)
 		return (NULL);
 	if (n < 0)
 	{
@@ -79,25 +45,21 @@ char	*ft_itoa_base_neg(int n, char *base)
 	return (res);
 }
 
-char	*ft_itoa_base(int n, char *base)
+char	*ft_itoa_base_2(int n, char *base)
 {
+	int		li;
 	int		lenb;
-	char	*res;
 	int		i;
-	long int		li;
+	char	*res;
 
-	if (n == -2147483648)
-	{
-		res = ft_gear("-2147483648");
-		return (res);
-	}
 	if ((ft_strlen(base) > 10) && n < 0)
 		li = n + 4294967296;
 	if (n < 0)
 		return (ft_itoa_base_neg(n, base));
 	lenb = ft_strlen(base);
 	i = ft_digits(n, lenb);
-	if (!(res = ft_calloc(i + 1)))
+	res = ft_calloc(i + 1);
+	if (!res)
 		return (NULL);
 	i--;
 	while (i > 0)
@@ -110,6 +72,18 @@ char	*ft_itoa_base(int n, char *base)
 	return (res);
 }
 
+char	*ft_itoa_base(int n, char *base)
+{
+	char		*res;
+
+	if (n == -2147483648)
+	{
+		res = ft_gear("-2147483648");
+		return (res);
+	}
+	return (ft_itoa_base_2(n, base));
+}
+
 char	*ft_itoa_base_u(long int n, char *base)
 {
 	int				lenb;
@@ -118,12 +92,13 @@ char	*ft_itoa_base_u(long int n, char *base)
 	long int		li;
 
 	if ((ft_strlen(base) > 10) && n < 0)
-	 	li = 4294967295 - n;
+		li = 4294967295 - n;
 	else
 		li = n;
 	lenb = ft_strlen(base);
 	i = ft_digits_u(li, lenb);
-	if (!(res = ft_calloc(i + 1)))
+	res = ft_calloc(i + 1);
+	if (!res)
 		return (NULL);
 	i--;
 	while (i > 0)
@@ -132,6 +107,6 @@ char	*ft_itoa_base_u(long int n, char *base)
 		li = li / lenb;
 		i--;
 	}
-	res[i] = base[li ];
+	res[i] = base[li];
 	return (res);
 }
