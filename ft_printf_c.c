@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int		ft_c_padding_right(char c, t_flags *flags)
+int	ft_c_padding_right(char c, t_flags *flags)
 {
 	int		i;
 	char	*s;
@@ -12,10 +12,10 @@ int		ft_c_padding_right(char c, t_flags *flags)
 	i = 0;
 	while (i < flags->width - 1)
 		s[i++] = ' ';
-	return(1 + ft_result(s));
+	return (1 + (ft_result(s)));
 }
 
-int		ft_c_padding_left(char c, t_flags *flags)
+int	ft_c_padding_left(char c, t_flags *flags)
 {
 	int		i;
 	char	*s;
@@ -35,12 +35,12 @@ int		ft_c_padding_left(char c, t_flags *flags)
 	{
 		plusOne = ft_result(s);
 		write(1, &s[i], 1);
-		return(1 + plusOne);
+		return (1 + (plusOne));
 	}
 	return (ft_result(s));
 }
 
-int		ft_c_padding_left_pct(char c, t_flags *flags)
+int	ft_c_padding_left_pct(char c, t_flags *flags)
 {
 	int		i;
 	char	*s;
@@ -60,12 +60,12 @@ int		ft_c_padding_left_pct(char c, t_flags *flags)
 	{
 		plusOne = ft_result(s);
 		write(1, &s[i], 1);
-		return(1 + plusOne);
+		return (1 + (plusOne));
 	}
 	return (ft_result(s));
 }
 
-int		ft_c_padding_right_pct(char c, t_flags *flags)
+int	ft_c_padding_right_pct(char c, t_flags *flags)
 {
 	int		i;
 	char	*s;
@@ -78,18 +78,17 @@ int		ft_c_padding_right_pct(char c, t_flags *flags)
 	while (i < flags->width)
 		s[i++] = ' ';
 	return (ft_result(s));
-	
 }
 
-int		ft_printf_c(char c, t_flags *flags, int pct)
+int	ft_printf_c(char c, t_flags *flags, int pct)
 {
 	if (pct == 1 && flags->zero == 1 && flags->minus == 0)
-	 	return (ft_c_padding_left_pct(c, flags));
+		return (ft_c_padding_left_pct(c, flags));
 	if (pct == 1 && flags->zero == 1 && flags->minus == 1)
-	 	return (ft_c_padding_right_pct(c, flags));
+		return (ft_c_padding_right_pct(c, flags));
 	if (flags->width <= 1)
 		return (ft_putchar(c));
 	if (flags->minus)
-		return (ft_c_padding_right(c , flags));
-	return (ft_c_padding_left(c , flags));
+		return (ft_c_padding_right(c, flags));
+	return (ft_c_padding_left(c, flags));
 }
