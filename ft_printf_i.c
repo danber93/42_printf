@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_i.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dbertill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/08 15:57:50 by dbertill          #+#    #+#             */
+/*   Updated: 2021/05/08 15:59:33 by dbertill         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_i_padding_blanks_left(char *s, t_flags *flags)
@@ -6,7 +18,7 @@ int	ft_i_padding_blanks_left(char *s, t_flags *flags)
 	int		blanks;
 
 	zeros = 0;
-	if (flags->precision > ft_strlen(s))
+	if (flags->precision > ft_strlen(s) - ft_is_neg(s))
 	{
 		zeros = flags->precision - ft_strlen(s) + ft_is_neg(s);
 		blanks = flags->width - zeros - ft_strlen(s);

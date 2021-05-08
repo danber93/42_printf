@@ -1,5 +1,8 @@
 #include "ft_printf.h"
 
+#include <stdio.h>
+#include <limits.h>
+
 void	test_char()
 {
 	// NO PADDING/precision CON CHAR
@@ -198,12 +201,9 @@ int		main(void)
 
 	printf("\n\n\n-----------------start uns-----------------\n\n");
 
-	// i = printf("#*%*.*x*#\n", 10, 21, -10);
-	// j = ft_printf("#*%*.*x*#\n", 10, 21, -10);
-	// printf("%d = %i\n\n", i, j);
 
-	i = printf(" 0*%0-*.*x*0 0*%0*.*x*0\n", 6, 2, 102, 10, 21, -101);
-	j = ft_printf(" 0*%0-*.*x*0 0*%0*.*x*0\n", 6, 2, 102, 10, 21, -101);
+	i = printf("#--0*%0*.0x*0 0*%0*.10x*0--#\n", -21, LONG_MAX, 21, LONG_MIN);
+	j = ft_printf("#--0*%0*.0x*0 0*%0*.10x*0--#\n", -21, LONG_MAX, 21, LONG_MIN);
 	printf("%d = %i\n\n", i, j);
 
 	

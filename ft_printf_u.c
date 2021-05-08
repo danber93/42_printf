@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_u.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dbertill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/08 15:59:00 by dbertill          #+#    #+#             */
+/*   Updated: 2021/05/08 15:59:01 by dbertill         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_printf_u(unsigned int n, t_flags *flags, char *base)
@@ -9,7 +21,7 @@ int	ft_printf_u(unsigned int n, t_flags *flags, char *base)
 		if (s[0] == '0' && flags->point)
 			s[0] = '\0';
 	if (!(flags->point) && !(flags->width))
-		return (ft_putstr(s));
+		return (ft_result(s));
 	if (flags->precision >= flags->width)
 	{
 		if (flags->precision <= ft_strlen(s))

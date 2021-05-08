@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_s.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dbertill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/08 16:00:08 by dbertill          #+#    #+#             */
+/*   Updated: 2021/05/08 16:00:09 by dbertill         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_s_null_fpoint(t_flags *flags)
@@ -88,6 +100,13 @@ int	ft_printf_s(char *s, t_flags *flags)
 	int		len;
 	char	*t;
 
+	if (flags->width < 0)
+	{
+		flags->minus = 1;
+		flags->width *= -1;
+	}
+	if (flags->precision < -1 && s)
+		flags->precision = ft_strlen(s);
 	if (!s)
 		return (ft_s_null_pleft(flags));
 	if (!(flags->point) && !(flags->width))
