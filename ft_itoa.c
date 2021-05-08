@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dbertill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/08 15:59:15 by dbertill          #+#    #+#             */
+/*   Updated: 2021/05/08 15:59:16 by dbertill         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_digits_u(long int n, int lenb)
@@ -91,10 +103,9 @@ char	*ft_itoa_base_u(long int n, char *base)
 	int				i;
 	unsigned int	li;
 
-	if ((ft_strlen(base) > 10) && n < 0)
-		li = 4294967295 - n;
-	else
-		li = n;
+	li = n;
+	while ((ft_strlen(base) > 10) && li < 0)
+		li = 4294967295 - li;
 	lenb = ft_strlen(base);
 	i = ft_digits_u(li, lenb);
 	res = ft_calloc(i + 1);

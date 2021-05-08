@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dbertill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/08 15:59:23 by dbertill          #+#    #+#             */
+/*   Updated: 2021/05/08 15:59:24 by dbertill         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
@@ -55,5 +67,6 @@ int		ft_s_null_pright(t_flags *flags);
 int		ft_revert(char *s);
 int		ft_s_null_fpoint_2(t_flags *flags, char *s, char *n);
 void	ft_flags_star(t_flags *flags, va_list ap);
+int		ft_x_revert(char *dest, int blanks);
 
 #endif
