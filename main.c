@@ -198,7 +198,28 @@ int		main(void)
 
 	printf("\n\n\n-----------------start uns-----------------\n\n");
 
-	i = printf("#%ld#\n", -2147483648);
-	j = ft_printf("#%d#\n", -2147483648);
+	// i = printf("#*%*.*x*#\n", 10, 21, -10);
+	// j = ft_printf("#*%*.*x*#\n", 10, 21, -10);
+	// printf("%d = %i\n\n", i, j);
+
+	i = printf(" 0*%0-*.*x*0 0*%0*.*x*0\n", 6, 2, 102, 10, 21, -101);
+	j = ft_printf(" 0*%0-*.*x*0 0*%0*.*x*0\n", 6, 2, 102, 10, 21, -101);
 	printf("%d = %i\n\n", i, j);
+
+	
+}
+
+void	print_flags(t_flags *flags)
+{
+	printf("\n\n-----------------------------------------------\n");
+	printf("                                               \n");
+	printf("Zero = %d\n", flags->zero);
+	printf("Minus = %d\n", flags->minus);
+	printf("Star_Width = %d\n", flags->star_width);
+	printf("Star_Precision = %d\n", flags->star_precision);
+	printf("Point = %d\n", flags->point);
+	printf("Width = %d\n", flags->width);
+	printf("Precision = %d\n", flags->precision);
+	printf("                                               \n");
+	printf("-----------------------------------------------\n\n");
 }

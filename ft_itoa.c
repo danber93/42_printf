@@ -89,7 +89,7 @@ char	*ft_itoa_base_u(long int n, char *base)
 	int				lenb;
 	char			*res;
 	int				i;
-	long int		li;
+	unsigned int	li;
 
 	if ((ft_strlen(base) > 10) && n < 0)
 		li = 4294967295 - n;

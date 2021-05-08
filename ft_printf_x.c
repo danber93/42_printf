@@ -1,7 +1,6 @@
 #include "ft_printf.h"
 
-
-int		ft_x_revert(char *dest, int blanks)
+int	ft_x_revert(char *dest, int blanks)
 {
 	int		i;
 	int		j;
@@ -18,17 +17,34 @@ int		ft_x_revert(char *dest, int blanks)
 	return (ft_result(res));
 }
 
-int		ft_x_padding_left_point(char *s, t_flags *flags)
+int	ft_x_padding_left_point_2(char *s, t_flags *flags, int blanks, int zeros)
 {
 	int		i;
 	int		j;
+	char	*dest;
+
+	dest = ft_calloc(flags->width);
+	i = 0;
+	while (i < blanks)
+		dest[i++] = ' ';
+	while (i < blanks + zeros)
+		dest[i++] = '0';
+	j = 0;
+	while (i < flags->width)
+		dest[i++] = s[j++];
+	free(s);
+	if (flags->minus)
+		return (ft_x_revert(dest, blanks));
+	return (ft_result(dest));
+}
+
+int	ft_x_padding_left_point(char *s, t_flags *flags)
+{
 	int		len;
 	int		blanks;
 	int		zeros;
-	char	*dest;
 
 	len = ft_strlen(s);
-	
 	if (flags->width < len)
 	{
 		if (flags->precision > len)
@@ -46,22 +62,10 @@ int		ft_x_padding_left_point(char *s, t_flags *flags)
 		blanks = flags->width - len;
 		zeros = 0;
 	}
-	dest = ft_calloc(flags->width);
-	i = 0;
-	while (i < blanks)
-		dest[i++] = ' ';
-	while (i < blanks + zeros)
-		dest[i++] = '0';
-	j = 0;
-	while (i < flags->width)
-		dest[i++] = s[j++];
-	free(s);
-	if (flags->minus)
-		return (ft_x_revert(dest, blanks));
-	return (ft_result(dest));
+	return (ft_x_padding_left_point_2(s, flags, blanks, zeros));
 }
 
-int		ft_x_padding_left(char *s, t_flags *flags)
+int	ft_x_padding_left(char *s, t_flags *flags)
 {
 	char	*dest;
 	int		i;
@@ -80,11 +84,11 @@ int		ft_x_padding_left(char *s, t_flags *flags)
 	j = 0;
 	while (i < flags->width)
 		dest[i++] = s[j++];
-	free(s);		
+	free(s);
 	return (ft_result(dest));
 }
 
-int		ft_printf_x(long int n, t_flags *flags, char *base)
+int	ft_printf_x(long int n, t_flags *flags, char *base)
 {
 	char	*s;
 

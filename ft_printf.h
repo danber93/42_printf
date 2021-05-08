@@ -1,14 +1,11 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
+# include <unistd.h>
+# include <stdarg.h>
+# include <stdlib.h>
 
-#include <unistd.h>
-#include <stdarg.h>
-#include <stdlib.h>
-
-#include <stdio.h>
-
-typedef	struct	s_flags
+typedef struct s_flags
 {
 	int			minus;
 	int			zero;
@@ -50,12 +47,13 @@ char	*ft_gear(char *s);
 int		ft_i_padding_left(char *s, t_flags *flags);
 char	*ft_cut_minus(char *s);
 int		ft_i_pleft_no_blanks(char *s, char *dest, int zeros);
-int		ft_i_padding_blanks_left_2(char *s, t_flags *flags, int blanks, int zeros);
+int		ft_i_padding_blanks_left_2(char *s, t_flags *f, int b, int z);
 int		ft_is_neg(char *s);
 char	*ft_s_padding_left(char *s, char *dest, t_flags *flags);
 char	*ft_s_padding(char *s, t_flags *flags);
 int		ft_s_null_pright(t_flags *flags);
 int		ft_revert(char *s);
 int		ft_s_null_fpoint_2(t_flags *flags, char *s, char *n);
+void	ft_flags_star(t_flags *flags, va_list ap);
 
 #endif

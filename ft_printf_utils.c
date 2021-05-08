@@ -1,6 +1,25 @@
 #include "ft_printf.h"
 
-int		ft_result(char *s)
+void	ft_flags_star(t_flags *flags, va_list ap)
+{
+	if (!flags->point)
+	{
+		flags->star_width = 1;
+		flags->width = va_arg(ap, int);
+		if (flags->width < 0)
+		{
+			flags->minus = 1;
+			flags->width *= -1;
+		}
+	}
+	else
+	{
+		flags->star_precision = 1;
+		flags->precision = va_arg(ap, int);
+	}
+}
+
+int	ft_result(char *s)
 {
 	int	i;
 
@@ -9,7 +28,7 @@ int		ft_result(char *s)
 	return (i);
 }
 
-int		ft_handle_format(char f, t_flags *flags, va_list ap)
+int	ft_handle_format(char f, t_flags *flags, va_list ap)
 {
 	if (f == '%')
 		return (ft_printf_c('%', flags, 1));
@@ -29,4 +48,3 @@ int		ft_handle_format(char f, t_flags *flags, va_list ap)
 		return (ft_printf_u(va_arg(ap, unsigned int), flags, "0123456789"));
 	return (0);
 }
-

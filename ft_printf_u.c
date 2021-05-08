@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int		ft_printf_u(unsigned int n, t_flags *flags, char *base)
+int	ft_printf_u(unsigned int n, t_flags *flags, char *base)
 {
 	char	*s;
 
