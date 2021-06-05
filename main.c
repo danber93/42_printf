@@ -223,6 +223,7 @@ int		main(void)
 	i = printf("#%.*s#\n", -1, "abcdefghijklmnop");
 	printf("%i == %i\n", i, j);
 
+	printf("\n%-.5s\n");
 }
 
 void	print_flags(t_flags *flags)
