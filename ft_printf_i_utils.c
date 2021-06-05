@@ -91,7 +91,7 @@ int	ft_i_padding_blanks_left_2(char *s, t_flags *flags, int blanks, int zeros)
 	while (i < blanks + zeros + ft_is_neg(s))
 		dest[i++] = '0';
 	if (ft_strlen(s) == 1 && s[0] == '0' && flags->point == 1
-		&& flags->precision <= 0)
+		&& flags->precision <= 0 && (flags->width < flags->precision || flags->precision == 0))
 		s[0] = ' ';
 	while (i < blanks + zeros + ft_strlen(s))
 		dest[i++] = s[j++];

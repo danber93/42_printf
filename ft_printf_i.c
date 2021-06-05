@@ -26,7 +26,7 @@ int	ft_i_padding_blanks_left(char *s, t_flags *flags)
 	else
 	{
 		blanks = flags->width - ft_strlen(s);
-		if (flags->zero && !flags->point)
+		if (flags->zero && (!flags->point || flags->precision < 0))
 		{
 			zeros = blanks;
 			blanks = 0;
@@ -66,8 +66,11 @@ int	ft_i_padding_blanks_right(char *s, t_flags *flags)
 	i = 0;
 	if (s[0] == '-')
 		dest[i++] = '-';
-	if (ft_strlen(s) == 1 && s[0] == '0' && flags->point == 1
-		&& flags->precision <= 0)
+	// if (ft_strlen(s) == 1 && s[0] == '0' && flags->point == 1
+	// 	&& flags->precision <= 0)
+	// 	s[0] = '0';
+	if (ft_strlen(s) == 1 && s[0] == '0' && flags->precision == 0
+		&& flags->width > flags->precision && flags->minus)
 		s[0] = ' ';
 	return (ft_i_padding_blanks_right_2(s, flags, i, dest));
 }
@@ -84,7 +87,7 @@ int	ft_printf_i_utils(t_flags *flags, char **s)
 		if (flags->width <= ft_strlen(*s))
 		{
 			if (ft_strlen(*s) == 1)
-				if ((*s)[0] == '0')
+				if ((*s)[0] == '0' && !(flags->star_precision == 1 && flags->precision != 0))
 					(*s)[0] = ' ';
 			return (ft_result(*s));
 		}
@@ -100,11 +103,15 @@ int	ft_printf_i(int n, t_flags *flags, char *base)
 	char	*s;
 
 	s = ft_itoa_base(n, base);
+	if (flags->width == 1 && flags->point == 0)
+		return (ft_result(s));
+	if (flags->width == 0 && flags-> point == 1 && flags->star_precision == 1 && flags->precision < 0)
+		return (ft_result(s));
 	if (!(flags->point) && !(flags->width))
 		return (ft_result(s));
 	if (flags->precision >= flags->width)
 	{
-		if (flags->precision <= ft_strlen(s))
+		if (flags->precision <= ft_strlen(s) - ft_is_neg(s))
 		{
 			if (flags->precision <= 0 && s[0] == '0')
 			{

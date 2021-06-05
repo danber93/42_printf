@@ -202,11 +202,27 @@ int		main(void)
 	printf("\n\n\n-----------------start uns-----------------\n\n");
 
 
-	i = printf("#--0*%0*.0x*0 0*%0*.10x*0--#\n", -21, LONG_MAX, 21, LONG_MIN);
-	j = ft_printf("#--0*%0*.0x*0 0*%0*.10x*0--#\n", -21, LONG_MAX, 21, LONG_MIN);
-	printf("%d = %i\n\n", i, j);
+	// i = printf("#--0*%0*.0lx*0 0*%0*.10lx*0--#\n", -21, LONG_MAX, 21, LONG_MIN);
+	// j = ft_printf("#--0*%0*.0x*0 0*%0*.10x*0--#\n", -21, LONG_MAX, 21, LONG_MIN);
+	// printf("%d = %i\n\n", i, j);
 
-	
+	// j = ft_printf("#%*.*d#\n", 10, -11, 131);
+	// i = printf("#%*.*d#\n", 10, -11, 131);
+	// printf("%i == %i\n", i, j);
+
+	// j = ft_printf("#%*.*d#\n", 10, 11, 131);
+	// i = printf("#%*.*d#\n", 10, 11, 131);
+	// printf("%i == %i\n\n", i, j);
+
+	j = ft_printf("#%.s#\n", "abcdefghijklmnop");
+	i = printf("#%.s#\n", "abcdefghijklmnop");
+	printf("%i == %i\n", i, j);
+
+
+	j = ft_printf("#%.*s#\n", -1, "abcdefghijklmnop");
+	i = printf("#%.*s#\n", -1, "abcdefghijklmnop");
+	printf("%i == %i\n", i, j);
+
 }
 
 void	print_flags(t_flags *flags)
