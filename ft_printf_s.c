@@ -46,7 +46,10 @@ int	ft_s_null_pleft(t_flags *flags)
 		return (ft_s_null_pright(flags));
 	i = 0;
 	j = 0;
-	s = ft_calloc(flags->width);
+	if (flags->width > ft_strlen(n))
+		s = ft_calloc(flags->width);
+	else
+		s = ft_calloc(ft_strlen(n));
 	if (flags->width > 0)
 	{
 		if (ft_strlen(n) > flags->width)

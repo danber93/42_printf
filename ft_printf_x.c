@@ -20,6 +20,13 @@ int	ft_x_padding_left_point_2(char *s, t_flags *flags, int blanks, int zeros)
 
 	dest = ft_calloc(flags->width);
 	i = 0;
+	if (flags->zero && flags->precision < 0)
+	{
+		zeros = flags->width - ft_strlen(s);
+		blanks = blanks - zeros;
+		if (blanks < 0)
+			blanks = 0;
+	}
 	while (i < blanks)
 		dest[i++] = ' ';
 	while (i < blanks + zeros)
@@ -103,8 +110,8 @@ int	ft_printf_x(long int n, t_flags *flags, char *base)
 	s = ft_itoa_base_u(n, base);
 	if (flags->minus)
 		flags->zero = 0;
-	if (flags->point && flags->precision <= 0 && ft_strlen(s) == 1)
-		if (s[0] == '0' && !flags->star_precision)
+	if (flags->point == 1 && flags->precision == 0)
+		if (ft_strlen(s) == 1 && s[0] == '0')
 			s[0] = '\0';
 	if (flags->zero)
 		return (ft_x_padding_left(s, flags));

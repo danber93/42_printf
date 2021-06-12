@@ -214,16 +214,23 @@ int		main(void)
 	// i = printf("#%*.*d#\n", 10, 11, 131);
 	// printf("%i == %i\n\n", i, j);
 
-	j = ft_printf("#%.s#\n", "abcdefghijklmnop");
-	i = printf("#%.s#\n", "abcdefghijklmnop");
+	j = ft_printf("#%c, %-c, %12c, %-3c, %-1c, %1c, %-2c, %-4c, %5c, %3c, %-*c, %-*c, %*c, %*c#\n", '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', '\0', -1, '\0', 0, '\0', 0, '\0', 0, '\0');
+	i = printf("#%c, %-c, %12c, %-3c, %-1c, %1c, %-2c, %-4c, %5c, %3c, %-*c, %-*c, %*c, %*c#\n", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0);
 	printf("%i == %i\n", i, j);
 
+	// j = ft_printf("#%3s#\n", NULL);
+	// i = printf("#%3s#\n", NULL);
+	// printf("%i == %i\n", i, j);
 
-	j = ft_printf("#%.*s#\n", -1, "abcdefghijklmnop");
-	i = printf("#%.*s#\n", -1, "abcdefghijklmnop");
-	printf("%i == %i\n", i, j);
+	// j = ft_printf("#%3s, %8s, %---2s, %.*s, %.0s, %.1s, %.2s, %.4s, %.8s#\n", NULL, NULL, NULL, -2, NULL, NULL, NULL, NULL, NULL, NULL);
+	// i = printf("#%3s, %8s, %---2s, %.*s, %.0s, %.1s, %.2s, %.4s, %.8s#\n", NULL, NULL, NULL, -2, NULL, NULL, NULL, NULL, NULL, NULL);
+	// printf("%i == %i\n", i, j);
 
-	printf("\n%-.5s\n");
+	// i = ft_printf("#%-8.12s, %3s#\n", NULL, NULL);
+	// j = printf("#%-8.12s, %3s#\n", NULL, NULL);
+	// printf("%i == %i\n", i, j);
+
+
 }
 
 void	print_flags(t_flags *flags)
