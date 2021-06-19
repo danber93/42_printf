@@ -18,7 +18,8 @@ int	ft_printf_u(unsigned int n, t_flags *flags, char *base)
 
 	s = ft_itoa_base_u(n, base);
 	if (ft_strlen(s) == 1)
-		if (s[0] == '0' && (!flags->precision || (flags->point == 1 && flags->precision == -1 && flags->star_precision == 0)))
+		if (s[0] == '0' && (!flags->precision || (flags->point == 1
+					&& flags->precision == -1 && flags->star_precision == 0)))
 			s[0] = '\0';
 	if (!(flags->point) && !(flags->width))
 		return (ft_result(s));

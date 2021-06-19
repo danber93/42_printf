@@ -51,7 +51,6 @@ int	ft_c_padding_left(char c, t_flags *flags)
 		write(1, &c, 1);
 		return (1 + (plusOne));
 	}
-
 	return (ft_result(s));
 }
 

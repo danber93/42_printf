@@ -78,7 +78,8 @@ int	ft_printf_s_3(t_flags *flags, char *t)
 
 int	ft_printf_s_2(char *s, t_flags *flags, char *t, int len)
 {
-	if (flags->point == 1 && (flags->precision > -1 || (flags->star_precision == 0 && flags->precision == -1)))
+	if (flags->point == 1 && (flags->precision > -1
+			|| (flags->star_precision == 0 && flags->precision == -1)))
 	{
 		if (flags->precision < len)
 		{
