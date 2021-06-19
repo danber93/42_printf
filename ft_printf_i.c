@@ -12,6 +12,7 @@
 
 #include "ft_printf.h"
 
+// #include <stdio.h>
 int	ft_i_padding_blanks_left(char *s, t_flags *flags)
 {
 	int		zeros;
@@ -26,12 +27,14 @@ int	ft_i_padding_blanks_left(char *s, t_flags *flags)
 	else
 	{
 		blanks = flags->width - ft_strlen(s);
+		// printf("\n blanks = %i", blanks);
 		if (flags->zero && (!flags->point || flags->precision < 0))
 		{
 			zeros = blanks;
 			blanks = 0;
 		}
 	}
+	// printf("\n zeros = %i\n", zeros);
 	return (ft_i_padding_blanks_left_2(s, flags, blanks, zeros));
 }
 
@@ -71,6 +74,8 @@ int	ft_i_padding_blanks_right(char *s, t_flags *flags)
 	// 	s[0] = '0';
 	if (ft_strlen(s) == 1 && s[0] == '0' && flags->precision == 0
 		&& flags->width > flags->precision && flags->minus)
+		s[0] = ' ';
+	if (ft_strlen(s) == 1 && s[0] == '0' && flags->point == 1 && flags->precision == -1 && flags->star_precision == 0)
 		s[0] = ' ';
 	return (ft_i_padding_blanks_right_2(s, flags, i, dest));
 }

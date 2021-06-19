@@ -110,7 +110,7 @@ int	ft_printf_x(long int n, t_flags *flags, char *base)
 	s = ft_itoa_base_u(n, base);
 	if (flags->minus)
 		flags->zero = 0;
-	if (flags->point == 1 && flags->precision == 0)
+	if (flags->point == 1 && (flags->precision == 0 || (flags->precision < 0 && flags->star_precision == 0)))
 		if (ft_strlen(s) == 1 && s[0] == '0')
 			s[0] = '\0';
 	if (flags->zero)

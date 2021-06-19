@@ -16,11 +16,13 @@ int	ft_c_padding_right(char c, t_flags *flags)
 {
 	int		i;
 	char	*s;
+	int		j;
 
-	s = ft_calloc(flags->width + 1);
+	s = ft_calloc(flags->width);
 	if (!s)
 		return (-1);
 	write(1, &c, 1);
+	j = 0;
 	i = 0;
 	while (i < flags->width - 1)
 		s[i++] = ' ';
@@ -46,9 +48,10 @@ int	ft_c_padding_left(char c, t_flags *flags)
 	if (plusOne)
 	{
 		plusOne = ft_result(s);
-		write(1, &s[i], 1);
+		write(1, &c, 1);
 		return (1 + (plusOne));
 	}
+
 	return (ft_result(s));
 }
 
