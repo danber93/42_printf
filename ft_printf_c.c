@@ -33,7 +33,7 @@ int	ft_c_padding_left(char c, t_flags *flags)
 {
 	int		i;
 	char	*s;
-	int		plusOne;
+	int		plus_one;
 
 	s = ft_calloc(flags->width + 1);
 	if (!s)
@@ -42,14 +42,14 @@ int	ft_c_padding_left(char c, t_flags *flags)
 	while (i < flags->width - 1)
 		s[i++] = ' ';
 	s[i] = c;
-	plusOne = 0;
+	plus_one = 0;
 	if (s[i] == '\x00')
-		plusOne = 1;
-	if (plusOne)
+		plus_one = 1;
+	if (plus_one)
 	{
-		plusOne = ft_result(s);
+		plus_one = ft_result(s);
 		write(1, &c, 1);
-		return (1 + (plusOne));
+		return (1 + (plus_one));
 	}
 	return (ft_result(s));
 }
@@ -58,7 +58,7 @@ int	ft_c_padding_left_pct(char c, t_flags *flags)
 {
 	int		i;
 	char	*s;
-	int		plusOne;
+	int		plus_one;
 
 	s = ft_calloc(flags->width + 1);
 	if (!s)
@@ -67,14 +67,14 @@ int	ft_c_padding_left_pct(char c, t_flags *flags)
 	while (i < flags->width - 1)
 		s[i++] = '0';
 	s[i] = c;
-	plusOne = 0;
+	plus_one = 0;
 	if (s[i] == '\x00')
-		plusOne = 1;
-	if (plusOne)
+		plus_one = 1;
+	if (plus_one)
 	{
-		plusOne = ft_result(s);
+		plus_one = ft_result(s);
 		write(1, &s[i], 1);
-		return (1 + (plusOne));
+		return (1 + (plus_one));
 	}
 	return (ft_result(s));
 }

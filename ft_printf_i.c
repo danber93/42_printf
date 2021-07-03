@@ -106,7 +106,7 @@ int	ft_printf_i(int n, t_flags *flags, char *base)
 	s = ft_itoa_base(n, base);
 	if (flags->width == 1 && flags->point == 0)
 		return (ft_result(s));
-	if (flags->width == 0 && flags-> point == 1 && flags->star_precision == 1
+	if (flags->width == 0 && flags->point == 1 && flags->star_precision == 1
 		&& flags->precision < 0)
 		return (ft_result(s));
 	if (!(flags->point) && !(flags->width))
