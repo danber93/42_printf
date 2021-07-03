@@ -218,9 +218,9 @@ int		main(void)
 	// i = printf("#%c, %-c, %12c, %-3c, %-1c, %1c, %-2c, %-4c, %5c, %3c, %-*c, %-*c, %*c, %*c#\n", '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', -1, '0', '0', '0', '0', '0', '0', '0');
 	// printf("%i == %i\n", i, j);
 
-	j = ft_printf("%.5p", 0);
-	i = printf("%.5p", 0);
-	printf("%i == %i\n", i, j);
+	// j = ft_printf("#%2.9p#\n", 1234);
+	// i = printf("#%2.9p#\n", 1234);
+	// printf("%i == %i\n", i, j);
 
 	// j = ft_printf("#%3s, %8s, %---2s, %.*s, %.0s, %.1s, %.2s, %.4s, %.8s#\n", NULL, NULL, NULL, -2, NULL, NULL, NULL, NULL, NULL, NULL);
 	// i = printf("#%3s, %8s, %---2s, %.*s, %.0s, %.1s, %.2s, %.4s, %.8s#\n", NULL, NULL, NULL, -2, NULL, NULL, NULL, NULL, NULL, NULL);

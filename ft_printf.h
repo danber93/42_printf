@@ -68,5 +68,6 @@ int		ft_revert(char *s);
 int		ft_s_null_fpoint_2(t_flags *flags, char *s, char *n);
 void	ft_flags_star(t_flags *flags, va_list ap);
 int		ft_x_revert(char *dest, int blanks);
+int		ft_s_null_fpoint(t_flags *flags);
 
 #endif

@@ -11,7 +11,7 @@ RM = rm -f
 SRCS = ft_itoa.c ft_printf_c.c ft_printf_i.c ft_printf_p.c ft_printf_s.c \
 		ft_printf_u.c ft_printf_x.c ft_printf_utils.c ft_printf.c \
 		ft_utils1.c ft_utils2.c ft_itoa_utils.c ft_printf_i_utils.c \
-		ft_printf_s_utils.c ft_printf_x_utils.c
+		ft_printf_s_utils.c ft_printf_x_utils.c ft_printf_s_utils2.c
 
 OBJS = $(SRCS:.c=.o)
 # BOBJS = $(BSRCS:.c=.o)
